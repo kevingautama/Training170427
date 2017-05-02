@@ -16,7 +16,7 @@ namespace Training170427.Controllers
 
         // GET: Category
         public ActionResult Index()
-        {
+        {   
             return View(db.Category.ToList().Where(a => a.IsDeleted != true));
         }
 

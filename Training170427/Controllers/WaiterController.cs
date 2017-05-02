@@ -71,6 +71,7 @@ namespace Training170427.Controllers
             data.TableID = TableID;
 
             var category = from a in db.Category
+                           where a.IsDeleted != true
                            select a;
            
             List<CategoryViewModel> ListCategory = new List<CategoryViewModel>();
@@ -79,7 +80,7 @@ namespace Training170427.Controllers
                 CategoryViewModel Category = new CategoryViewModel();
                 Category.CategoryID = item.CategoryID;
                 Category.CategoryName = item.CategoryName;
-                var listcategory = (from a in db.Menu
+                var listmenu = (from a in db.Menu
                                     where a.CategoryID == item.CategoryID
                                     select new OrderItemViewModel
                                     {
@@ -89,7 +90,7 @@ namespace Training170427.Controllers
                                         Content = a.Content,
                                         ContentType = a.ContentType
                                     }).ToList();
-                Category.OrderItem = listcategory;
+                Category.OrderItem = listmenu;
                 ListCategory.Add(Category);
             }
      
@@ -104,19 +105,104 @@ namespace Training170427.Controllers
         // POST: Waiter/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "OrderID,OrderDate,TypeID,Finish,CreatedBy,CreatedDate,UpdatedBy,UpdateDate,IsDeleted")] Order order)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Order.Add(order);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    ViewBag.TypeID = new SelectList(db.Type, "TypeID", "TypeName", order.TypeID);
+        //    return View(order);
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderID,OrderDate,TypeID,Finish,CreatedBy,CreatedDate,UpdatedBy,UpdateDate,IsDeleted")] Order order)
+        public ActionResult Create(AddOrder data)
         {
-            if (ModelState.IsValid)
+            var Type = db.Type.Find(data.TypeID).TypeName;
+            if(Type == "Order")
             {
-                db.Order.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if(db.Table.Find(data.TableID).TableStatus == "NotOccupied")
+                {
+                    Table table = db.Table.Find(data.TableID);
+                    table.TableStatus = "Occupied";
+                    db.Entry(table).State = EntityState.Modified;
 
-            ViewBag.TypeID = new SelectList(db.Type, "TypeID", "TypeName", order.TypeID);
-            return View(order);
+                    Order order = new Order();
+                    order.OrderDate = DateTime.Now;
+                    order.TypeID = data.TypeID;
+                    order.Finish = false;
+                    order.CreatedBy = "Admin";
+                    order.CreatedDate = DateTime.Now;
+                    order.IsDeleted = false;
+                    db.Order.Add(order);
+
+                    foreach(var item in data.Category)
+                    {
+                        foreach(var item2 in item.OrderItem)
+                        {
+                            if(item2.Qty > 0)
+                            {
+                                OrderItem orderitem = new OrderItem();
+                                orderitem.OrderID = order.OrderID;
+                                orderitem.MenuID = item2.MenuID;
+                                orderitem.Qty = item2.Qty;
+                                orderitem.Notes = item2.Notes;
+                                orderitem.CreatedBy = "Admin";
+                                orderitem.CreatedDate = DateTime.Now;
+                                orderitem.Status = "Order";
+                                db.OrderItem.Add(orderitem);
+                            }
+                        }
+                    }
+
+                    Track track = new Track();
+                    track.OrderID = order.OrderID;
+                    track.TableID = table.TableID;
+                    track.CreatedBy = "Admin";
+                    track.CreatedDate = DateTime.Now;
+                    db.Track.Add(track);
+
+                }
+                else
+                {
+                    return RedirectToAction("Create");
+                }
+            }else if(Type == "TakeAway")
+            {
+                Order order = new Order();
+                order.OrderDate = DateTime.Now;
+                order.TypeID = data.TypeID;
+                order.Finish = false;
+                order.CreatedBy = "Admin";
+                order.CreatedDate = DateTime.Now;
+                order.IsDeleted = false;
+                db.Order.Add(order);
+
+                foreach (var item in data.Category)
+                {
+                    foreach (var item2 in item.OrderItem)
+                    {
+                        if (item2.Qty > 0)
+                        {
+                            OrderItem orderitem = new OrderItem();
+                            orderitem.OrderID = order.OrderID;
+                            orderitem.MenuID = item2.MenuID;
+                            orderitem.Qty = item2.Qty;
+                            orderitem.Notes = item2.Notes;
+                            orderitem.CreatedBy = "Admin";
+                            orderitem.CreatedDate = DateTime.Now;
+                            db.OrderItem.Add(orderitem);
+                        }
+                    }
+                }
+            }
+            db.SaveChanges();
+            return null;
         }
 
         // GET: Waiter/Edit/5

@@ -1,7 +1,53 @@
-﻿
+﻿@model Training170427.Models.AddOrder
 @{
     ViewBag.Title = "ChooseMenu";
 }
 
 <h2>ChooseMenu</h2>
+@using (Html.BeginForm("Create", "Waiter"))
+{
+    @Html.AntiForgeryToken()
+
+    if (Model.TableID != null)
+    {
+        @Html.HiddenFor(model => model.TableID);
+    }
+    @Html.HiddenFor(model => model.TypeID);
+    for (var item = 0; item < Model.Category.Count; item++)
+    {
+
+        <div class="row"><h1 class="panel-title">@Model.Category[item].CategoryName</h1></div>
+        if (Model.Category[item].OrderItem.Count == 0)
+        {
+            <div class="form-group">
+               
+                <label class="control-label col-sm-2">No Data</label>
+                
+                
+            </div>
+        }
+        else
+        {
+
+            for (var item2 = 0; item2<Model.Category[item].OrderItem.Count;item2++)
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(model => model.Category[item].OrderItem[item2].MenuID)
+                    <label class="control-label col-sm-2">@Model.Category[item].OrderItem[item2].MenuName</label>
+                    <div class="col-sm-10 form-inline">
+                        @Html.TextBoxFor(model => model.Category[item].OrderItem[item2].Qty, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Category[item].OrderItem[item2].Notes, new { @class = "form-control", @placeholder = "Notes" })
+                    </div>
+                </div>
+            }
+        }
+
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}
+
 
