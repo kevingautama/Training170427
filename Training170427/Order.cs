@@ -25,11 +25,12 @@ namespace Training170427
         public int OrderID { get; set; }
         public System.DateTime OrderDate { get; set; }
         public int TypeID { get; set; }
-        public bool Finish { get; set; }
+        public Nullable<bool> Finish { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bill { get; set; }
