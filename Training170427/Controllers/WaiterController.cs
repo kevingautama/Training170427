@@ -66,7 +66,11 @@ namespace Training170427.Controllers
         //[HttpPost]
         public ActionResult ChooseMenu(int TypeID, int? TableID)
         {
-            
+            AddOrder data = new AddOrder();
+            data.TypeID = TypeID;
+
+        
+
             return null;
         }
 
