@@ -306,6 +306,7 @@
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Shared\_No_Layout.cshtml" />
     <Content Include="Views\Home\About - Copy.cshtml" />
+    <Content Include="Views\Home\Contact - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
