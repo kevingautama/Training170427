@@ -169,6 +169,7 @@
     </Compile>
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KitchenController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\TypeController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Menu.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
@@ -298,7 +300,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Kitchen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
