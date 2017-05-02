@@ -194,6 +194,7 @@ namespace Training170427.Controllers
                             orderitem.MenuID = item2.MenuID;
                             orderitem.Qty = item2.Qty;
                             orderitem.Notes = item2.Notes;
+                            orderitem.Status = "Order";
                             orderitem.CreatedBy = "Admin";
                             orderitem.CreatedDate = DateTime.Now;
                             db.OrderItem.Add(orderitem);
