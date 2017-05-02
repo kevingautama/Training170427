@@ -68,10 +68,37 @@ namespace Training170427.Controllers
         {
             AddOrder data = new AddOrder();
             data.TypeID = TypeID;
+            data.TableID = TableID;
 
+            var category = from a in db.Category
+                           select a;
+           
+            List<CategoryViewModel> ListCategory = new List<CategoryViewModel>();
+            foreach(var item in category)
+            {
+                CategoryViewModel Category = new CategoryViewModel();
+                Category.CategoryID = item.CategoryID;
+                Category.CategoryName = item.CategoryName;
+                var listcategory = (from a in db.Menu
+                                    where a.CategoryID == item.CategoryID
+                                    select new OrderItemViewModel
+                                    {
+                                        MenuID = a.MenuID,
+                                        MenuName = a.MenuName,
+                                        Price = a.MenuPrice,
+                                        Content = a.Content,
+                                        ContentType = a.ContentType
+                                    }).ToList();
+                Category.OrderItem = listcategory;
+                ListCategory.Add(Category);
+            }
+     
+            data.Category = ListCategory;
+               
+                             
         
 
-            return null;
+            return View(data);
         }
 
         // POST: Waiter/Create

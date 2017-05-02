@@ -171,6 +171,7 @@
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AddOrder.cs" />
+    <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
@@ -305,6 +306,7 @@
     <Content Include="Views\Waiter\ChooseTable.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Shared\_No_Layout.cshtml" />
+    <Content Include="Views\Waiter\ChooseMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,7 +344,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54923</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
