@@ -1,0 +1,62 @@
+﻿@model Training170427.Models.AddOrder
+
+@{
+    ViewBag.Title = "ChooseTable";
+}
+@*<script>
+        function GetTableID(x) {
+            document.getElementById('TableID').value = x;
+        }
+</script>*@
+
+<h2>ChooseTable</h2>
+
+
+
+
+@using (Html.BeginForm("ChooseMenu", "Waiter"))
+{
+                        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Order</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        
+        <div class="form-group">
+            <div class="col-md-12">
+                @foreach (var item in Model.Table)
+                {
+
+                        @Html.HiddenFor(model => model.TypeID)
+                        @*@Html.HiddenFor(model => item.TableID)*@
+                    <div class="col-md-3">
+                        <div class="card" style="width: 20rem;border:1px solid black;margin:5px">
+
+                            <div class="card-block">
+                                <center>
+                                    <h4 class="card-header">@item.TableName</h4>
+                                    @*<input type="submit" value="Pilih" class="btn btn-default" onclick="GetTableID(@item.TableID)" onsubmit="GetTableID(@item.TableID)" />*@
+                                    <a href="/Waiter/ChooseMenu/?TypeID=@Model.TypeID&TableID=@item.TableID" class="btn btn-primary" style="margin-bottom:10px">Pilih</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                }
+                    
+            </div>
+
+        </div>
+    </div>
+@*<input type="hidden" id="TableID" />*@
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

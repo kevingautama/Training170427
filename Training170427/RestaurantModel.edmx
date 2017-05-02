@@ -55,11 +55,12 @@
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderDate" Type="date" Nullable="false" />
           <Property Name="TypeID" Type="int" Nullable="false" />
-          <Property Name="Finish" Type="bit" Nullable="false" />
+          <Property Name="Finish" Type="bit" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="date" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -109,6 +110,7 @@
           <Property Name="CreatedDate" Type="date" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Track">
           <Key>
@@ -333,7 +335,7 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
-          <Property Name="Finish" Type="Boolean" Nullable="false" />
+          <Property Name="Finish" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -342,6 +344,7 @@
           <NavigationProperty Name="Type" Relationship="Self.FK_Order_Type" FromRole="Order" ToRole="Type" />
           <NavigationProperty Name="OrderItem" Relationship="Self.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="Track" Relationship="Self.FK_Track_Order" FromRole="Order" ToRole="Track" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -395,6 +398,7 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Track" Relationship="Self.FK_Track_Table" FromRole="Table" ToRole="Track" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Track">
           <Key>
@@ -618,6 +622,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="RestaurantModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
@@ -672,6 +677,7 @@
           <EntitySetMapping Name="Table">
             <EntityTypeMapping TypeName="RestaurantModel.Table">
               <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="TableID" ColumnName="TableID" />
                 <ScalarProperty Name="TableName" ColumnName="TableName" />
                 <ScalarProperty Name="TableStatus" ColumnName="TableStatus" />
