@@ -26,5 +26,10 @@ namespace Training170427.Controllers
 
             return View();
         }
+
+        public ActionResult Menu()
+        {
+            return View();
+        }
     }
 }
