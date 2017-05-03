@@ -46,6 +46,7 @@ namespace Training170427.Controllers
                 var orderitem = (from a in db.OrderItem
                                 where a.OrderID == item.OrderID
                                 select a.Status).ToList();
+                status = 0;
                 foreach(var item2 in orderitem)
                 {
                     if(item2 == "FinishCook")
@@ -239,7 +240,7 @@ namespace Training170427.Controllers
                 }
             }
             db.SaveChanges();
-            return null;
+            return RedirectToAction("index");
         }
 
         // GET: Waiter/Edit/5
