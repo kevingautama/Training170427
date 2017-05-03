@@ -53,13 +53,13 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="TypeID" Type="int" Nullable="false" />
           <Property Name="Finish" Type="bit" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdateDate" Type="date" />
+          <Property Name="UpdateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="OrderItem">
@@ -76,6 +76,7 @@
           <Property Name="CreatedDate" Type="date" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -333,13 +334,13 @@
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
           <Property Name="Finish" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Bill" Relationship="Self.FK_Bill_Order" FromRole="Order" ToRole="Bill" />
           <NavigationProperty Name="Type" Relationship="Self.FK_Order_Type" FromRole="Order" ToRole="Type" />
           <NavigationProperty Name="OrderItem" Relationship="Self.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
@@ -362,6 +363,7 @@
           <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Menu" Relationship="Self.FK_OrderItem_Menu" FromRole="OrderItem" ToRole="Menu" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -637,6 +639,7 @@
           <EntitySetMapping Name="OrderItem">
             <EntityTypeMapping TypeName="RestaurantModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="OrderItemID" ColumnName="OrderItemID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="MenuID" ColumnName="MenuID" />

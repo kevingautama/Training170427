@@ -24,6 +24,7 @@ namespace Training170427
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Menu Menu { get; set; }
         public virtual Order Order { get; set; }

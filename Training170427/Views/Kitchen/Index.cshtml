@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Training170427.Models.AddOrder>
+@{
+    ViewBag.Title = "Kitchen";
+}
+
+<h2>Kitchen</h2>
+
+@foreach (var item in Model)
+{
+    <div class="panel panel-primary">
+        
+        @if (item.TypeName == "Order")
+        {
+            <div class="panel-heading">
+                <h3 class="panel-title">@item.OrderID - @item.TableName</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    @foreach (var item2 in item.OrderItem)
+                    {
+                        <tr>
+                            <td>@item2.MenuName</td>
+                            <td>@item2.Qty</td>
+                            <td>@item2.Notes</td>
+                            <td>@item2.Status</td>
+                            <td><a href="cookitem?id=@item2.OrderItemID" class="btn btn-primary">Cook</a>|<a href="cancelitem?id=@item2.OrderItemID" class="btn btn-primary">Cancel</a></td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="panel-heading">
+                <h3 class="panel-title">@item.OrderID - TakeAway</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    @foreach (var item2 in item.OrderItem)
+                    {
+                        <tr>
+                            <td>@item2.MenuName</td>
+                            <td>@item2.Qty</td>
+                            <td>@item2.Notes</td>
+                            <td>@item2.Status</td>
+                            <td>
+                                @if (item2.Status == "Cook")
+                                {
+                                    <a href="finishitem?id=@item2.OrderItemID" class="btn btn-primary">Finish</a>
+                                }
+                                else if (item2.Status == "Order")
+                                {
+                                    <a href="cookitem?id=@item2.OrderItemID" class="btn btn-primary">Cook</a>  <a href = "cancelitem?id=@item2.OrderItemID" class="btn btn-primary">Cancel</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+                }
+            </div>
+
+        }

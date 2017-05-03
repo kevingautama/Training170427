@@ -117,7 +117,7 @@ namespace Training170427.Controllers
                 Category.CategoryID = item.CategoryID;
                 Category.CategoryName = item.CategoryName;
                 var listmenu = (from a in db.Menu
-                                    where a.CategoryID == item.CategoryID
+                                    where a.CategoryID == item.CategoryID && a.Status.StatusName =="Ready"
                                     select new OrderItemViewModel
                                     {
                                         MenuID = a.MenuID,

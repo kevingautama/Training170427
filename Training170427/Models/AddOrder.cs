@@ -15,5 +15,6 @@ namespace Training170427.Models
         public string TableName { get; set; }
         public List<CategoryViewModel> Category {get;set;}
         public List<Table> Table { get; set; }
+        public List<OrderItemViewModel> OrderItem { get; set; }
     }
 }
