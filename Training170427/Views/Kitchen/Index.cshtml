@@ -23,7 +23,14 @@
                             <td>@item2.Qty</td>
                             <td>@item2.Notes</td>
                             <td>@item2.Status</td>
-                            <td><a href="cookitem?id=@item2.OrderItemID" class="btn btn-primary">Cook</a>|<a href="cancelitem?id=@item2.OrderItemID" class="btn btn-primary">Cancel</a></td>
+                            <td>@if (item2.Status == "Cook")
+                                {
+                                    <a href="finishitem?id=@item2.OrderItemID" class="btn btn-primary">Finish</a>
+                                }
+                                else if (item2.Status == "Order")
+                                {
+                                    <a href="cookitem?id=@item2.OrderItemID" class="btn btn-primary">Cook</a>  <a href = "cancelitem?id=@item2.OrderItemID" class="btn btn-primary">Cancel</a>
+                                }</td>
                         </tr>
 
                     }
