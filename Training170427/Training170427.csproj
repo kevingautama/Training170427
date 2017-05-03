@@ -309,10 +309,10 @@
     <Content Include="Views\Shared\_No_Layout.cshtml" />
     <Content Include="Views\Waiter\ChooseMenu.cshtml" />
     <Content Include="Views\Kitchen\Index.cshtml" />
+    <Content Include="Views\CheckOut\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CheckOut\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
