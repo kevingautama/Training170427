@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Training170427.Order>
+﻿@model IEnumerable<Training170427.Models.AddOrder>
 
 @{
     ViewBag.Title = "Index";
@@ -9,67 +9,28 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Finish)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type.TypeName)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    @if (item.TypeName == "Order")
+                {
+                        <h3 class="panel-title">@item.TableName</h3>
+                    }
+                    else
+                    {
+                        <h3 class="panel-title">TakeAway</h3>
+                    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Finish)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type.TypeName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
-    </tr>
-}
-
-</table>
+                </div>
+                <div class="panel-body">
+                        @if (item.Status != 0) { <p>Served</p> }
+                        else{<p> --- </p> }
+                    <a href="DetailOrder?id=@item.OrderID" class="btn btn-primary btn-block">Detail Order</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

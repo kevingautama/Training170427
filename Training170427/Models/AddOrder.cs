@@ -9,7 +9,10 @@ namespace Training170427.Models
     {
         public int OrderID { get; set; }
         public int TypeID { get; set; }
+        public string TypeName { get; set; }
+        public int Status { get; set; }
         public int? TableID { get; set; }
+        public string TableName { get; set; }
         public List<CategoryViewModel> Category {get;set;}
         public List<Table> Table { get; set; }
     }

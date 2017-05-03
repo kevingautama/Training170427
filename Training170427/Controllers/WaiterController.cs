@@ -16,10 +16,46 @@ namespace Training170427.Controllers
         private RestaurantEntities db = new RestaurantEntities();
 
         // GET: Waiter
+        //public ActionResult Index()
+        //{
+        //    var order = db.Order.Include(o => o.Type);
+        //    return View(order.ToList());
+        //}
+
         public ActionResult Index()
         {
-            var order = db.Order.Include(o => o.Type);
-            return View(order.ToList());
+            var status = 0;
+            var order = (from a in db.Order
+                         where a.Finish == false
+                         select new AddOrder
+                         {
+                             OrderID = a.OrderID,
+                             TypeName = a.Type.TypeName,
+                             TableID = (from b in db.Track
+                                        where b.OrderID == a.OrderID
+                                        select b.TableID).FirstOrDefault(),
+                             TableName = (from b in db.Track
+                                        where b.OrderID == a.OrderID
+                                        select b.Table.TableName).FirstOrDefault()
+                            
+                         }).ToList();
+
+            foreach(var item in order)
+            {
+               
+                var orderitem = (from a in db.OrderItem
+                                where a.OrderID == item.OrderID
+                                select a.Status).ToList();
+                foreach(var item2 in orderitem)
+                {
+                    if(item2 == "FinishCook")
+                    {
+                        status = status + 1;
+                    }
+                }
+                item.Status = status;
+            }
+            return View(order);
         }
 
         // GET: Waiter/Details/5
