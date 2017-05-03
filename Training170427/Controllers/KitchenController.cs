@@ -12,6 +12,11 @@ namespace Training170427.Controllers
         // GET: Kitchen
         public ActionResult Index()
         {
+            var order = (from a in db.Order
+                        where a.Finish == false && a.IsDeleted == false
+                        select a).ToList();
+
+
             return View();
         }
     }

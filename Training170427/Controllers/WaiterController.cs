@@ -26,7 +26,7 @@ namespace Training170427.Controllers
         {
             var status = 0;
             var order = (from a in db.Order
-                         where a.Finish == false
+                         where a.Finish == false && a.IsDeleted == false
                          select new AddOrder
                          {
                              OrderID = a.OrderID,
