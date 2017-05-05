@@ -22,6 +22,11 @@ namespace Training170427.Controllers
         //    return View(order.ToList());
         //}
 
+        public ActionResult OrderDetail()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             var status = 0;
