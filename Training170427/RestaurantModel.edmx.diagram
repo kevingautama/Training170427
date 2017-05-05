@@ -7,7 +7,7 @@
       <Diagram DiagramId="beb339543cb74c209590d69ed70c0461" Name="Diagram1">
         <EntityTypeShape EntityType="RestaurantModel.Bill" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.Category" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestaurantModel.Menu" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Menu" PointX="6" PointY="10.5" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.Order" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.OrderItem" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.Status" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
@@ -16,9 +16,9 @@
         <EntityTypeShape EntityType="RestaurantModel.Track" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RestaurantModel.Type" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <AssociationConnector Association="RestaurantModel.FK_Bill_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantModel.FK_Menu_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantModel.FK_Menu_Status" ManuallyRouted="false" />
-        <AssociationConnector Association="RestaurantModel.FK_OrderItem_Menu" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="RestaurantModel.FK_Menu_Category" />
+        <AssociationConnector ManuallyRouted="false" Association="RestaurantModel.FK_Menu_Status" />
+        <AssociationConnector ManuallyRouted="false" Association="RestaurantModel.FK_OrderItem_Menu" />
         <AssociationConnector Association="RestaurantModel.FK_Order_Type" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK_OrderItem_Order" ManuallyRouted="false" />
         <AssociationConnector Association="RestaurantModel.FK_Track_Order" ManuallyRouted="false" />

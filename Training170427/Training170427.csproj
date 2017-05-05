@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Models\AddOrder.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\CheckOutModel.cs" />
     <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
@@ -310,6 +311,7 @@
     <Content Include="Views\Waiter\ChooseMenu.cshtml" />
     <Content Include="Views\Kitchen\Index.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
+    <Content Include="Views\CheckOut\CheckOutOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
