@@ -22,8 +22,20 @@ namespace Training170427.Controllers
         //    return View(order.ToList());
         //}
 
-        public ActionResult OrderDetail()
+        public ActionResult OrderDetail(int? id)
         {
+            OrderDetailViewModel Detail = new OrderDetailViewModel();
+            var detail = (from a in db.OrderItem
+                         where a.OrderID == id
+                         select new OrderItemViewModel
+                         {
+                             OrderItemID = a.OrderItemID,
+                             MenuID = a.MenuID,
+                             MenuName = a.Menu.MenuName,
+                             Qty = a.Qty,
+                             Notes = a.Notes,
+                             Status = a.Status
+                         }).ToList();
             return View();
         }
 
