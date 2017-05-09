@@ -1,6 +1,8 @@
 ﻿@{ 
     Layout = "~/Views/Shared/_test.cshtml";
 }
+
+
 <div class="row">
         <div class="col-md-8" >
            
@@ -226,11 +228,72 @@
                         <td>Rp.500000</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i> </button><button class="btn btn-success"><i class="glyphicon glyphicon-credit-card"></i> </button></td>
-                        <td align="right"><b>GrandTotal</b></td>
+                        <td colspan="2"><button class="btn btn-primary" ><i class="glyphicon glyphicon-print"></i> </button><button class="btn btn-success" data-toggle="modal" data-target="#ModalCheckOut"><i class="glyphicon glyphicon-credit-card" ></i> </button></td>
+                        <td><b>GrandTotal</b></td>
                         <td><b>Rp.300000</b></td>
                     </tr>
                 </table> 
             </div>
         </div>
+</div>
+
+<div class="modal" id="ModalCheckOut">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">CheckOut</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+                        <td>Rp.500000</td>
+                    </tr>
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+                       
+                        <td>Rp.500000</td>
+                    </tr>
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+                       
+                        <td>Rp.500000</td>
+                    </tr>
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+                     
+                        <td>Rp.500000</td>
+                    </tr>
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+                     
+                        <td>Rp.500000</td>
+                    </tr>
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>3</td>
+            
+                        <td>Rp.500000</td>
+                    </tr>
+                </table> 
+            </div>
+            <div class="modal-footer">
+                <form class="form-horizontal">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                        <input type="text" class="form-control">
+                    </div>
+                    <button type="button" class="btn btn-success btn-block">Pay</button>
+                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" data-target="#ModalCheckOut">Close</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
 </div>
