@@ -15,6 +15,12 @@ namespace Training170427.Controllers
     {
         private RestaurantEntities db = new RestaurantEntities();
 
+
+        public ActionResult test()
+        {
+            return View();
+        }
+
         // GET: Waiter
         //public ActionResult Index()
         //{
