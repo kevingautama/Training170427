@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>CheckOut</h2>
+<h2>Payment</h2>
 
 <div class="row">
     @foreach (var item in Model)
@@ -22,6 +22,7 @@
 
                 </div>
                 <div class="panel-body">
+                    <button class="btn btn-primary btn-block">Print</button>
                     <a href="CheckOutOrder?id=@item.OrderID" class="btn btn-primary btn-block">CheckOut</a>
                 </div>
             </div>

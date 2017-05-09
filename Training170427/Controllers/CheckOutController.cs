@@ -77,7 +77,11 @@ namespace Training170427.Controllers
                 }
 
                 data.OrderID = id;
-                data.TableName = tablename.Table.TableName;
+                if(db.Type.Find(order.TypeID).TypeName == "Order")
+                {
+                    data.TableName = tablename.Table.TableName;
+                }
+                
                 data.GrandTotal = Convert.ToDecimal(grandtotal);
                 data.OrderItem = orderitem;
                 return View(data);

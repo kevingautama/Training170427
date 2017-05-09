@@ -3,5 +3,53 @@
     ViewBag.Title = "CheckOutOrder";
 }
 
-<h2>CheckOutOrder</h2>
+<h2>CheckOutOrder - @Model.TableName</h2>
 
+<table class="table">
+  @foreach (var item in Model.OrderItem)
+  {
+    <tr>
+        <td>@item.MenuName</td>
+        <td>@item.Qty</td>
+        <td>@item.Price</td>
+    </tr>
+  }
+    <tr><td colspan="2" align="right"><b>Grandtotal</b></td><td id="grandtotal">@Model.GrandTotal</td></tr>
+    <tr>
+        <td colspan="3" align="right">
+          <div><input type="text" id="bayar" required class="form-control" />
+
+
+            <button type="submit" data-toggle="modal" data-target="#myModal" onclick="jalan()">Bayar</button></div>
+                
+            
+        </td>
+    </tr>
+</table>
+    
+<script>
+    function jalan() {
+        var bayar = parseFloat(document.getElementById("bayar").value);
+        var kembalian = bayar -  parseFloat(document.getElementById("grandtotal").innerHTML) ;
+        document.getElementById("kembalian").innerHTML = kembalian;
+    }
+    
+</script>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Kembalian</h4>
+            </div>
+            <div class="modal-body">
+                <p>Kembali:</p>
+                <p id="kembalian"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
