@@ -13,6 +13,7 @@ using Training170427.Service;
 
 namespace Training170427.Controllers
 {
+    [RoutePrefix("api/WaiterAPI")]
     public class WaiterAPIController : ApiController
     {
         private RestaurantEntities db = new RestaurantEntities();
@@ -22,6 +23,14 @@ namespace Training170427.Controllers
         public List<Models.Order> GetOrder()
         {
             var data = service.GetOrder();
+            return data;
+        }
+
+        // GET: api/WaiterAPI/Table
+        [Route("Table")]
+        public List<Models.TableViewModel> GetTable()
+        {
+            var data = service.Table();
             return data;
         }
 
