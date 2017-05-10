@@ -4,29 +4,29 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+    <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="BillID" />
           </Key>
-          <Property Name="BillID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="OrderID" Nullable="false" Type="int" />
-          <Property Name="BillDate" Nullable="false" Type="date" />
-          <Property Name="TotalPrice" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="BillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="BillDate" Type="date" Nullable="false" />
+          <Property Name="TotalPrice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="CategoryName" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -34,17 +34,17 @@
           <Key>
             <PropertyRef Name="MenuID" />
           </Key>
-          <Property Name="MenuID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="MenuName" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="MenuPrice" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="MenuDescription" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuPrice" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuDescription" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Content" Type="varbinary(max)" />
-          <Property Name="ContentType" MaxLength="50" Type="varchar" />
-          <Property Name="CategoryID" Nullable="false" Type="int" />
+          <Property Name="ContentType" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="StatusID" Type="int" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -52,13 +52,14 @@
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
-          <Property Name="OrderID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="OrderDate" Nullable="false" Type="datetime" />
-          <Property Name="TypeID" Nullable="false" Type="int" />
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
           <Property Name="Finish" Type="bit" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -66,15 +67,15 @@
           <Key>
             <PropertyRef Name="OrderItemID" />
           </Key>
-          <Property Name="OrderItemID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="OrderID" Nullable="false" Type="int" />
-          <Property Name="MenuID" Nullable="false" Type="int" />
-          <Property Name="Qty" Nullable="false" Type="int" />
-          <Property Name="Notes" MaxLength="50" Type="varchar" />
-          <Property Name="Status" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="OrderItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -82,11 +83,11 @@
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
-          <Property Name="StatusID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="StatusName" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -94,9 +95,9 @@
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Nullable="false" MaxLength="128" Type="nvarchar" />
-          <Property Name="principal_id" Nullable="false" Type="int" />
-          <Property Name="diagram_id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
@@ -104,12 +105,12 @@
           <Key>
             <PropertyRef Name="TableID" />
           </Key>
-          <Property Name="TableID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="TableName" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="TableStatus" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="TableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TableStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -117,29 +118,29 @@
           <Key>
             <PropertyRef Name="TrackID" />
           </Key>
-          <Property Name="TrackID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="OrderID" Nullable="false" Type="int" />
-          <Property Name="TableID" Nullable="false" Type="int" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="TrackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
         </EntityType>
         <EntityType Name="Type">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
-          <Property Name="TypeID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="TypeName" Nullable="false" MaxLength="50" Type="varchar" />
-          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="date" />
-          <Property Name="UpdatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedDate" Type="date" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <Association Name="FK_Bill_Order">
-          <End Type="Self.Order" Multiplicity="1" Role="Order" />
-          <End Type="Self.Bill" Multiplicity="*" Role="Bill" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderID" />
@@ -150,8 +151,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Menu_Category">
-          <End Type="Self.Category" Multiplicity="1" Role="Category" />
-          <End Type="Self.Menu" Multiplicity="*" Role="Menu" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryID" />
@@ -162,8 +163,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Menu_Status">
-          <End Type="Self.Status" Multiplicity="0..1" Role="Status" />
-          <End Type="Self.Menu" Multiplicity="*" Role="Menu" />
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Status">
               <PropertyRef Name="StatusID" />
@@ -174,8 +175,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Type">
-          <End Type="Self.Type" Multiplicity="1" Role="Type" />
-          <End Type="Self.Order" Multiplicity="*" Role="Order" />
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type">
               <PropertyRef Name="TypeID" />
@@ -186,8 +187,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderItem_Menu">
-          <End Type="Self.Menu" Multiplicity="1" Role="Menu" />
-          <End Type="Self.OrderItem" Multiplicity="*" Role="OrderItem" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Menu">
               <PropertyRef Name="MenuID" />
@@ -198,8 +199,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderItem_Order">
-          <End Type="Self.Order" Multiplicity="1" Role="Order" />
-          <End Type="Self.OrderItem" Multiplicity="*" Role="OrderItem" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderID" />
@@ -210,8 +211,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Track_Order">
-          <End Type="Self.Order" Multiplicity="1" Role="Order" />
-          <End Type="Self.Track" Multiplicity="*" Role="Track" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Track" Type="Self.Track" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderID" />
@@ -222,8 +223,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Track_Table">
-          <End Type="Self.Table" Multiplicity="1" Role="Table" />
-          <End Type="Self.Track" Multiplicity="*" Role="Track" />
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Track" Type="Self.Track" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table">
               <PropertyRef Name="TableID" />
@@ -245,36 +246,36 @@
           <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Bill_Order" Association="Self.FK_Bill_Order">
-            <End EntitySet="Order" Role="Order" />
-            <End EntitySet="Bill" Role="Bill" />
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Bill" EntitySet="Bill" />
           </AssociationSet>
           <AssociationSet Name="FK_Menu_Category" Association="Self.FK_Menu_Category">
-            <End EntitySet="Category" Role="Category" />
-            <End EntitySet="Menu" Role="Menu" />
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <AssociationSet Name="FK_Menu_Status" Association="Self.FK_Menu_Status">
-            <End EntitySet="Status" Role="Status" />
-            <End EntitySet="Menu" Role="Menu" />
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Menu" EntitySet="Menu" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Type" Association="Self.FK_Order_Type">
-            <End EntitySet="Type" Role="Type" />
-            <End EntitySet="Order" Role="Order" />
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderItem_Menu" Association="Self.FK_OrderItem_Menu">
-            <End EntitySet="Menu" Role="Menu" />
-            <End EntitySet="OrderItem" Role="OrderItem" />
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
-            <End EntitySet="Order" Role="Order" />
-            <End EntitySet="OrderItem" Role="OrderItem" />
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderItem" EntitySet="OrderItem" />
           </AssociationSet>
           <AssociationSet Name="FK_Track_Order" Association="Self.FK_Track_Order">
-            <End EntitySet="Order" Role="Order" />
-            <End EntitySet="Track" Role="Track" />
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Track" EntitySet="Track" />
           </AssociationSet>
           <AssociationSet Name="FK_Track_Table" Association="Self.FK_Track_Table">
-            <End EntitySet="Table" Role="Table" />
-            <End EntitySet="Track" Role="Track" />
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Track" EntitySet="Track" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -346,6 +347,7 @@
           <NavigationProperty Name="OrderItem" Relationship="Self.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
           <NavigationProperty Name="Track" Relationship="Self.FK_Track_Order" FromRole="Order" ToRole="Track" />
           <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -624,6 +626,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="RestaurantModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />

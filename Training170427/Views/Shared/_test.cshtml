@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="RestaurantApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+   
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,7 +38,10 @@
        
     </div>
        
-
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Angular/Module.js"></script>
+    <script src="~/Angular/Service.js"></script>
+    <script src="~/Angular/Controller.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

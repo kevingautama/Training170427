@@ -11,6 +11,7 @@ namespace Training170427.Service
         private RestaurantEntities db = new RestaurantEntities();
         public List<Models.Order> GetOrder()
         {
+
             List<Models.Order> listdata = new List<Models.Order>();
             var order = (from a in db.Order
                          where a.Finish == false && a.IsDeleted == false
@@ -23,7 +24,7 @@ namespace Training170427.Service
                     var table = (from a in db.Track
                                  where a.OrderID == item.OrderID
                                  select a).FirstOrDefault();
-                    data.Name = table.Table.TableName;
+                    data.TableName = table.Table.TableName;
                     data.TableID = table.TableID;
                 }
 
@@ -49,6 +50,28 @@ namespace Training170427.Service
                 listdata.Add(data);
             }
             return listdata;
+        }
+
+        public Models.Order DetailOrder(int id)
+        {
+            Models.Order data = new Models.Order();
+            var order = db.Order.Find(id);
+
+            data.OrderID = order.OrderID;
+            data.OrderDate = order.CreatedDate;
+            data.TypeID = order.TypeID;
+
+            var table = (from a in db.Track
+                         where a.OrderID == id
+                         select a).FirstOrDefault();
+
+            data.TableID = table.TableID;
+            data.TableName = table.Table.TableName;
+
+            var orderitem = (from a in db.OrderItem
+                            where a.IsDeleted != true
+                            select a).ToList();
+            
         }
     }
 }

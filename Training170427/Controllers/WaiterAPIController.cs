@@ -19,7 +19,7 @@ namespace Training170427.Controllers
         OrderService service = new OrderService();
 
         // GET: api/WaiterAPI
-        public List<Models.Order> Get1()
+        public List<Models.Order> GetOrder()
         {
             var data = service.GetOrder();
             return data;
