@@ -1,14 +1,26 @@
-﻿app.controller("GetOrder", function ($scope, RestaurantService)
+﻿app.controller("GetOrder", function ($scope, WaiterResource)
 {
-    getOrder();
-    function getOrder() {
-        var service = RestaurantService.getOrder();
-        service.then(function (d) {
-            $scope.order = d.data;
-        },function (error)
-            {
-            console.log("error");
-            })  
+    var waiterresource = new WaiterResource();
+    $scope.GetOrder=[];
+    WaiterResource.GetOrder(function (data) {
+        console.log(data);
+        $scope.GetOrder = data;
+    });
+
+    //$scope.GetOrder = function() {
+    //    var service = RestaurantService.getOrder();
+    //    service.then(function (d) {
+    //        $scope.order = d.data;
+    //    },function (error)
+    //        {
+    //        console.log("error");
+    //        })  
+    //}
+    
+    
+
+    $scope.DetailOrder = function (id) {
+        console.log(id);
     }
    
 });

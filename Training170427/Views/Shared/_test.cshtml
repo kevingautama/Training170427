@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="RestaurantApp">
+<html ng-app="testApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
    
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    @*<script src="~/Angular/Module.js"></script>*@
+    @*<script src="~/Angular/Service.js"></script>*@
+    @*<script src="~/Angular/Controller.js"></script>*@
+    <script src="~/Angular/NewModule.js"></script>
+    <script src="~/Angular/NewController.js"></script>
+    <script src="~/Angular/NewService.js"></script>
 
 </head>
 <body>
@@ -38,10 +46,7 @@
        
     </div>
        
-    <script src="~/Scripts/angular.js"></script>
-    <script src="~/Angular/Module.js"></script>
-    <script src="~/Angular/Service.js"></script>
-    <script src="~/Angular/Controller.js"></script>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

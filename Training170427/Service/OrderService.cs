@@ -69,9 +69,18 @@ namespace Training170427.Service
             data.TableName = table.Table.TableName;
 
             var orderitem = (from a in db.OrderItem
-                            where a.IsDeleted != true
-                            select a).ToList();
-            
+                            where a.IsDeleted != true && a.OrderID == data.OrderID
+                            select new OrderItemViewModel
+                            {
+                                OrderItemID = a.OrderItemID,
+                                MenuID = a.MenuID,
+                                MenuName = a.Menu.MenuName,
+                                Price = a.Menu.MenuPrice,
+                                Qty = a.Qty
+                            }).ToList();
+
+            data.OrderItem = orderitem;
+            return data;
         }
     }
 }

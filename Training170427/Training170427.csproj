@@ -229,8 +229,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular\NewController.js" />
     <Content Include="Angular\Controller.js" />
     <Content Include="Angular\Module.js" />
+    <Content Include="Angular\NewModule.js" />
+    <Content Include="Angular\NewService.js" />
     <Content Include="Angular\Service.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

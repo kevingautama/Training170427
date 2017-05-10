@@ -37,7 +37,7 @@
 </style>
 
 <div class="row">
-    <div class="col-md-5" ng-controller="GetOrder">
+    <div class="col-md-5" ng-controller="testcontroller">
 
        
             <h4>Order  <button data-toggle="modal" data-target="#myModal" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></h4>
@@ -51,7 +51,8 @@
                             {{data.Name}}
                         </div>
                         <div class="panel-body">
-                            <a href="#" class="btn btn-primary btn-block">Detail</a>
+                            <button ng-click="DetailOrder(data.OrderID)">Detail</button>
+                            @*<a href="#" class="btn btn-primary btn-block">Detail</a>*@
                         </div>
                     </div>
                 </div>
