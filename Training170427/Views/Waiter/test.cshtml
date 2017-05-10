@@ -23,7 +23,8 @@
     }
 
     .scroll {
-        overflow-x: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         max-height: 50vh;
     }
 
@@ -97,7 +98,7 @@
             </div>
     </div>
     <div class="col-md-7" style="border:1px solid black">
-        <h4>Detail Order <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button><button class="btn btn-primary" data-toggle="modal" data-target="#ModalEdit"><i class="glyphicon glyphicon-edit"></i> </button></h4>
+        <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button><button class="btn btn-primary" data-toggle="modal" data-target="#ModalEdit"><i class="glyphicon glyphicon-edit"></i> </button></h4>
         <div class="row">
             <div class="col-md-6">
                 <h5><b>Order No : 5</b></h5>
@@ -385,128 +386,271 @@
     </div>
 </div>
 
-<div id="myModal2" class="modal fade" role="dialog">
+<div tabindex="-1" id="myModal2" class="modal fade" role="dialog">
     <div class="modal-dialog" style="width:70%">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Choose Table</h4>
+                <h4 class="modal-title">Choose Menu</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="row rows scroll">
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#food" data-toggle="tab">Food</a></li>
+                                <li><a href="#drink" data-toggle="tab">Drink</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="food">
+                                    <div class="row rows scroll">
+                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Nasi Goreng</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <h4>Nasi Goreng</h4>
-                                    <p>Price :  Rp. 10000</p>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h4>Nasi Goreng</h4>
-                                    <p>Price :  Rp. 10000</p>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h4>Nasi Goreng</h4>
-                                    <p>Price :  Rp. 10000</p>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h4>Nasi Goreng</h4>
-                                    <p>Price :  Rp. 10000</p>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h4>Nasi Goreng</h4>
-                                    <p>Price :  Rp. 10000</p>
+                                <div class="tab-pane" id="drink">
+                                    <div class="row rows scroll">
+                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row rows" style="padding-left:20px;">
+                                            <div class="col-lg-4">
+                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h4>Ice Tea</h4>
+                                                <p>Price :  Rp. 10000</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
-                        <div class="row rows scroll">
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h3>x 1</h3>
-                                    <input type="text" placeholder="Notes" />
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h3>x 1</h3>
-                                    <input type="text" placeholder="Notes" />
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h3>x 1</h3>
-                                    <input type="text" placeholder="Notes" />
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h3>x 1</h3>
-                                    <input type="text" placeholder="Notes" />
-                                </div>
-                            </div>
-                            <br />
-                            <div class="row rows" style="padding-left:20px;">
-                                <div class="col-lg-4">
-                                    <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                </div>
-                                <div class="col-lg-4">
-                                    <h3>x 1</h3>
-                                    <input type="text" placeholder="Notes" />
+                        <div class="tabbable">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#fooddetail" data-toggle="tab">Your Order</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="fooddetail" class="tab-pane active scroll">
+                                    <table class="table table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <td>Nama Makanan</td>
+                                                <td>Qty</td>
+                                                <td>Notes</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ice Tea</td>
+                                                <td>1</td>
+                                                <td><input type="text" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
+
+                        @*<div class="row rows scroll">
+                                <div class="row rows" style="padding-left:20px;">
+                                    <div class="col-lg-12">
+                                        <h4>Nasi Goreng 1 <input type="text" placeholder="Notes" /></h4>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row rows" style="padding-left:20px;">
+                                    <div class="col-lg-4">
+                                        <h3>x 1</h3>
+                                        <input type="text" placeholder="Notes" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row rows" style="padding-left:20px;">
+                                    <div class="col-lg-4">
+                                        <h3>x 1</h3>
+                                        <input type="text" placeholder="Notes" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row rows" style="padding-left:20px;">
+                                    <div class="col-lg-4">
+                                        <h3>x 1</h3>
+                                        <input type="text" placeholder="Notes" />
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row rows" style="padding-left:20px;">
+                                    <div class="col-lg-4">
+                                        <h3>x 1</h3>
+                                        <input type="text" placeholder="Notes" />
+                                    </div>
+                                </div>
+                            </div>*@
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Order</button>
             </div>
         </div>
     </div>

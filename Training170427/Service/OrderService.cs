@@ -52,26 +52,38 @@ namespace Training170427.Service
             return listdata;
         }
 
-        public Models.Order DetailOrder(int id)
-        {
-            Models.Order data = new Models.Order();
-            var order = db.Order.Find(id);
+        //public Models.Order DetailOrder(int id)
+        //{
+        //    Models.Order data = new Models.Order();
+        //    var order = db.Order.Find(id);
 
-            data.OrderID = order.OrderID;
-            data.OrderDate = order.CreatedDate;
-            data.TypeID = order.TypeID;
+        //    data.OrderID = order.OrderID;
+        //    data.OrderDate = order.CreatedDate;
+        //    data.TypeID = order.TypeID;
 
-            var table = (from a in db.Track
-                         where a.OrderID == id
-                         select a).FirstOrDefault();
+        //    var table = (from a in db.Track
+        //                 where a.OrderID == id
+        //                 select a).FirstOrDefault();
 
-            data.TableID = table.TableID;
-            data.TableName = table.Table.TableName;
+        //    data.TableID = table.TableID;
+        //    data.TableName = table.Table.TableName;
 
-            var orderitem = (from a in db.OrderItem
-                            where a.IsDeleted != true
-                            select a).ToList();
+        //    var orderitem = (from a in db.OrderItem
+        //                    where a.IsDeleted != true
+        //                    select a).ToList();
             
+        //}
+
+        public List<TableViewModel> Table()
+        {
+            var table = (from a in db.Table
+                         where a.IsDeleted != true && a.TableStatus == "NotOccupied"
+                         select new TableViewModel
+                         {
+                             TableID = a.TableID,
+                             TableName = a.TableName
+                         });
+            return Table();
         }
     }
 }
