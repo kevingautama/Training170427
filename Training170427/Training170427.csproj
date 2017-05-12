@@ -189,6 +189,7 @@
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderItemViewModel.cs" />
     <Compile Include="Models\OrderType.cs" />
+    <Compile Include="Models\ResponseViewModel.cs" />
     <Compile Include="Models\TableViewModel.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>

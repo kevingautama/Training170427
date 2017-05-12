@@ -38,161 +38,100 @@
 </style>
 
 <div class="row">
-    <div class="col-md-5" ng-controller="testcontroller">
-
-       
-            <h4>Order  <button data-toggle="modal" data-target="#myModal" ng-click="GetTable()" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></h4>
-            <div class="row" style="overflow: auto; max-height:50vh" >
-                <div class="col-md-4" ng-repeat="data in order">
+    <div class="col-md-6">
+        <div ng-repeat="type in order">
+            <h4>{{type.TypeName}}  <button data-toggle="modal" data-target="#myModal"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></h4>
+            <div class="row" style="overflow: auto; max-height:50vh">
+                <div class="col-md-4" ng-repeat="data in type.Order">
+                    <div ng-if="data.TableName != null">
+                        <button class="btn btn-primary btn-lg  btn-block" ng-click="DetailOrder(data.OrderID)"><i class="glyphicon glyphicon-cutlery "></i> {{data.TableName}} <span class="badge">{{data.OrderServed}}</span></button>
+                    </div>
+                    <div ng-if="data.Name != null">
+                        <button class="btn btn-primary btn-lg btn-block" ng-click="DetailOrder(data.OrderID)"><i class="glyphicon glyphicon-cutlery"></i>   {{data.Name}} <span class="badge">{{data.OrderServed}}</span></button>
+                    </div>
+                </div>
+                @*<div class="col-md-4" ng-repeat="data in type.Order">
                     <div class="panel panel-primary">
-                        <div class="panel-heading" ng-if="data.TableName != null">
-                            {{data.TableName}}
-                        </div>
-                        <div class="panel-heading" ng-if="data.Name != null">
+                        <div class="panel-heading">
+                            <div ng-if="data.TableName != null">
+                                {{data.TableName}}
+                            </div>
                             {{data.Name}}
+                            
                         </div>
                         <div class="panel-body">
-                            <button ng-click="DetailOrder(data.OrderID)">Detail</button>
-                            @*<a href="#" class="btn btn-primary btn-block">Detail</a>*@
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-     
-
-        
-            <h4>TakeAway <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></h4>
-            <div class="row" style="overflow: auto; max-height:20vh">
-                <div class="col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Kevin
-                        </div>
-                        <div class="panel-body">
+                            <center>{{data.OrderServed}}</center>
                             <a href="#" class="btn btn-primary btn-block">Detail</a>
                         </div>
                     </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Kevin
-                        </div>
-                        <div class="panel-body">
-                            <a href="#" class="btn btn-primary btn-block">Detail</a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Kevin
-                        </div>
-                        <div class="panel-body">
-                            <a href="#" class="btn btn-primary btn-block">Detail</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-    <div class="col-md-7" style="border:1px solid black">
-        <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button><button class="btn btn-primary" data-toggle="modal" data-target="#ModalEdit"><i class="glyphicon glyphicon-edit"></i> </button></h4>
-        <div class="row">
-            <div class="col-md-6">
-                <h5><b>Order No : 5</b></h5>
-            </div>
-            <div class="col-md-6">
-                <h5><em>Tuesday,9/5/2017 12:45AM</em></h5>
+                </div>*@
             </div>
         </div>
-        <div class="row">
-
-            <div style="max-height:60vh ; overflow:auto">
-                <table class="table table-hover">
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>3</td>
-                        <td>Ready to Serve</td>
-                        <td>Rp.500000</td>
-                    </tr>
-
-                </table>
-
+    </div>
+    <div class="col-md-6" >
+        <div class="col-md-12" ng-if="detailorder.OrderID != null">
+            <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Order </button><button ng-click="edit()" ng-hide="test === true" class="btn btn-primary" @*data-toggle="modal" data-target="#ModalEdit"*@><i class="glyphicon glyphicon-edit"></i>Edit </button><button ng-show="test === true" ng-click="save()" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> Save</button></h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><b>Order No : {{detailorder.OrderID}}</b></h5>
+                </div>
+                <div class="col-md-6">
+                    <h5><em>{{detailorder.OrderDate}}</em></h5>
+                </div>
             </div>
-            <table class="table table-hover">
-                <tr>
-                    <td colspan="2"><button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i> </button><button class="btn btn-success" data-toggle="modal" data-target="#ModalCheckOut"><i class="glyphicon glyphicon-credit-card"></i> </button></td>
-                    <td><b>GrandTotal</b></td>
-                    <td><b>Rp.300000</b></td>
-                </tr>
-            </table>
+            <div class="row">
+
+                <div style="max-height:60vh ; overflow:auto">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>
+                                Menu
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Qty
+                            </th>
+                            <th>
+                                Harga
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Notes
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="item in detailorder.OrderItem">
+                            <td>{{item.MenuName}}</td>
+                            <td>
+                                <span ng-if="item.Status == 'Served'" class="label label-success">{{item.Status}}</span>
+                                <span ng-if="item.Status == 'FinishCook'" class="label label-primary">{{item.Status}}</span>
+                            </td>   
+                            <td>{{item.Qty}}</td>
+                            <td>{{item.Price}}</td>
+                            <td>{{item.Price*item.Qty}}</td>
+                            <td>Pedas</td>
+                            <td>
+                                <button  ng-if="item.Status == 'Order'"  class="btn btn-danger btn-xs btn-block">Cancel</button>
+                                <button  ng-if="item.Status == 'FinishCook'" ng-click="serve(item.OrderItemID,detailorder.OrderID)" class="btn btn-primary btn-xs btn-block">Served</button>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button></td>
+                            <td></td>
+                            <td><b>GrandTotal</b></td>
+                            <td><b>Rp.300000</b></td>
+                   
+                            <td><button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut"><i class="glyphicon glyphicon-credit-card"></i>Pay </button></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

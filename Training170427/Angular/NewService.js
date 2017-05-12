@@ -8,6 +8,9 @@ service.factory('testservice', function ($resource) {
         DetailOrder: {
             method: 'GET', params: { action: 'DetailOrder' }
         },
+        ServedOrder: {
+            method: 'POST' , params: {action: 'ServedOrder'}
+        },
         //add table service
         GetTable: {
             method: 'GET', params: {action: 'GetTable' }
