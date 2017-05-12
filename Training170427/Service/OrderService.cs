@@ -151,7 +151,7 @@ namespace Training170427.Service
                              TableID = a.TableID,
                              TableName = a.TableName
                          }).ToList();
-            return Table();
+            return table;
         }
     }
 }
