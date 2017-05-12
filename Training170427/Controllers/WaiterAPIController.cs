@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Training170427;
+using Training170427.Models;
 using Training170427.Service;
 
 namespace Training170427.Controllers
@@ -20,10 +21,11 @@ namespace Training170427.Controllers
         OrderService service = new OrderService();
 
         // GET: api/WaiterAPI
-        public List<Models.Order> GetOrder()
+        public List<OrderType> GetOrder()
         {
             var data = service.GetOrder();
             return data;
+
         }
 
         [HttpGet]
@@ -40,6 +42,24 @@ namespace Training170427.Controllers
         {
             var data = service.Table();
             return data;
+        }
+
+        [Route("ServedOrder/{id}")]
+        public ResponseViewModel ServedOrder(int id)
+        {
+            var orderitem = db.OrderItem.Find(id);
+
+            if (orderitem.IsDeleted != true)
+            {
+                orderitem.Status = "Served";
+                db.Entry(orderitem).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return new ResponseViewModel { Status = true };
+            }
+            else
+            {
+                return new ResponseViewModel { Status = false }; ;
+            }
         }
 
         // GET: api/WaiterAPI/5

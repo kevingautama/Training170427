@@ -7,8 +7,8 @@ namespace Training170427.Models
 {
     public class OrderType
     {
-        public int OrderTypeID { get; set; }
-        public string OrderTypeName { get; set; }
-        public List<Order> Order { get; set; }
+        public int TypeID { get; set; }
+        public string TypeName { get; set; }
+        public List<Models.Order> Order { get; set; }
     }
 }
