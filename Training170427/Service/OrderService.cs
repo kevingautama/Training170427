@@ -48,7 +48,7 @@ namespace Training170427.Service
 
 
                     var orderitem = from a in db.OrderItem
-                                    where a.IsDeleted != true && a.OrderID == item2.OrderID
+                                    where a.IsDeleted != true && a.OrderID == item2.OrderID && a.Status != "Cancel"
                                     select a;
                     var i = 0;
                     foreach (var item3 in orderitem)
@@ -127,7 +127,7 @@ namespace Training170427.Service
             }
 
             var orderitem = (from a in db.OrderItem
-                            where a.IsDeleted != true && a.OrderID == data.OrderID
+                            where a.IsDeleted != true && a.OrderID == data.OrderID && a.Status != "Cancel"
                             select new OrderItemViewModel
                             {
                                 OrderItemID = a.OrderItemID,

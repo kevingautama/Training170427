@@ -107,27 +107,42 @@
                         <tr ng-repeat="item in detailorder.OrderItem">
                             <td>{{item.MenuName}}</td>
                             <td>
+                                <span ng-if="item.Status == 'Order' || item.Status == 'Cook' || item.Status == 'FinishCook'" class="label label-primary">{{item.Status}}</span>
                                 <span ng-if="item.Status == 'Served'" class="label label-success">{{item.Status}}</span>
-                                <span ng-if="item.Status == 'FinishCook'" class="label label-primary">{{item.Status}}</span>
+                               
                             </td>   
                             <td>{{item.Qty}}</td>
                             <td>{{item.Price}}</td>
                             <td>{{item.Price*item.Qty}}</td>
                             <td>Pedas</td>
                             <td>
-                                <button  ng-if="item.Status == 'Order'"  class="btn btn-danger btn-xs btn-block">Cancel</button>
+                                <button  ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)"  class="btn btn-danger btn-xs btn-block">Cancel</button>
                                 <button  ng-if="item.Status == 'FinishCook'" ng-click="serve(item.OrderItemID,detailorder.OrderID)" class="btn btn-primary btn-xs btn-block">Served</button>
                             </td>
                             
                         </tr>
                         <tr>
-                            <td colspan="2"><button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button></td>
+                            <td colspan="2">@*<button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button>*@</td>
                             <td></td>
-                            <td><b>GrandTotal</b></td>
-                            <td><b>Rp.300000</b></td>
+                            <td><b>Pajak</b></td>
+                            <td><b>Rp. {{tax}}</b></td>
                    
-                            <td><button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut"><i class="glyphicon glyphicon-credit-card"></i>Pay </button></td>
+                            <td>@*<button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"><i class="glyphicon glyphicon-credit-card"></i>Pay </button>*@</td>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td></td>
+                           
+                            <td><b>GrandTotal</b></td>
+                            <td><b>Rp. {{grandTotal+tax}}</b></td>
+                            <td></td>
+                            
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><button class="btn btn-primary btn-block"><i class="glyphicon glyphicon-print"></i>Print </button></td>
+                            <td colspan="4"><button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"><i class="glyphicon glyphicon-credit-card"></i>Pay </button> </td>
                         </tr>
                     </table>
                 </div>
@@ -141,104 +156,44 @@
         <div class="modal-content" >
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">CheckOut - Table 3 - OrderNo 5</h4>
+                <h4 class="modal-title">{{pay.TableName}}{{pay.Name}} - OrderNo {{pay.OrderID}}</h4>
+          
             </div>
             <div class="modal-body">
                 <div style="max-height:50vh ; overflow:auto">
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-                                <td>Rp.500000</td>
+                                <td>Menu</td>
+                                <td>Qty</td>
+                                <td>Price</td>
+                                <td>Total</td>
+                            </tr>
+                            <tr ng-repeat="data in detailorder.OrderItem">
+                                <td>{{data.MenuName}}</td>
+                                <td>{{data.Qty}}</td>
+                                <td>{{data.Price}}</td>
+                                <td>{{data.Qty*data.Price}}</td>
                             </tr>
                             <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
+                                <td></td>
+                                <td></td>
+                                <td>Pajak</td>
+                                <td>{{tax}}</td>
                             </tr>
                             <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
+                                <td></td>
+                                <td></td>
+                                <td>GrandTotal</td>
+                                <td>{{grandTotal+tax}}</td>
                             </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-                            <tr>
-                                <td>Nasi Goreng</td>
-                                <td>3</td>
-
-                                <td>Rp.500000</td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="modal-footer">
-               
-                <form class="form-horizontal">
-                    <div class="form-group">
-
-                        <input type="text" class="form-control" id="usr">
-                    </div>
+            <div class="modal-footer">      
                     <button type="button" class="btn btn-success btn-block">Pay</button>
                     <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" data-target="#ModalCheckOut">Close</button>
-                </form>
 
             </div>
         </div>

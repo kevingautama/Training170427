@@ -61,6 +61,24 @@ namespace Training170427.Controllers
                 return new ResponseViewModel { Status = false }; ;
             }
         }
+        [Route("CancelOrder/{id}")]
+        public ResponseViewModel CancelOrder(int id)
+        {
+            var orderitem = db.OrderItem.Find(id);
+
+            if (orderitem.IsDeleted != true)
+            {
+                orderitem.Status = "Cancel";
+                orderitem.IsDeleted = true;
+                db.Entry(orderitem).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return new ResponseViewModel { Status = true };
+            }
+            else
+            {
+                return new ResponseViewModel { Status = false }; ;
+            }
+        }
 
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]
