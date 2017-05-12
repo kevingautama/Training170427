@@ -13,10 +13,7 @@ service.factory('testservice', function ($resource) {
         },
         CancelOrder: {
             method: 'POST', params:{ action: 'CancelOrder'}
-        }
-
-        ,
-        //add table service
+        },
         GetTable: {
             method: 'GET', isArray:true, params: { action: 'Table' }
         }

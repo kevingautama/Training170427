@@ -82,12 +82,11 @@ controller.controller('testcontroller', function ($scope, testservice) {
         })
 
     };   
-
     
-    $scope.GetTable = function () {       
+    $scope.GetTable = function () {
         testservice.GetTable({}, function (data) {
             $scope.dataTable = data;
-        });        
+        });
     }
 
 });
