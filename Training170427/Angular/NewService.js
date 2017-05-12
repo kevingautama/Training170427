@@ -11,9 +11,8 @@ service.factory('testservice', function ($resource) {
         ServedOrder: {
             method: 'POST' , params: {action: 'ServedOrder'}
         },
-        //add table service
         GetTable: {
-            method: 'GET', params: {action: 'GetTable' }
+            method: 'GET', isArray:true, params: { action: 'Table' }
         }
     });
 });

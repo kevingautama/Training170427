@@ -2,7 +2,9 @@
 controller.controller('testcontroller', function ($scope, testservice) {
     var testService = new testservice();
     $scope.detailorder = {};
+    $scope.dataTable = [];
     $scope.order = testservice.GetOrder();
+
     $scope.DetailOrder = function (id) {
         console.log(id);
         testService.$DetailOrder({ id: id }, function (data) {
@@ -52,19 +54,14 @@ controller.controller('testcontroller', function ($scope, testservice) {
             console.log(data);
         })
 
-    };
-
-   
-
-    $scope.table = {};
-
-    $scope.GetTable = function () {
-        console.log("masuk");
-        testservice.$GetTable(), function (data) {
-            //$scope.table = data;
-            console.log(data);
-        }
-    }
+    };   
 
     
+    $scope.GetTable = function () {       
+        testservice.GetTable({}, function (data) {
+            $scope.dataTable = data;
+        });
+        
+    }
+
 });
