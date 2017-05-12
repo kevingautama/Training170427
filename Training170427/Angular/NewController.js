@@ -13,5 +13,15 @@ controller.controller('testcontroller', function ($scope, testservice) {
         });
     }
 
+    $scope.table = {};
+
+    $scope.GetTable = function () {
+        console.log("masuk");
+        testservice.$GetTable(), function (data) {
+            //$scope.table = data;
+            console.log(data);
+        }
+    }
+
     
 });

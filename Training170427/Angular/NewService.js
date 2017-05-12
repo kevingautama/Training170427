@@ -7,6 +7,10 @@ service.factory('testservice', function ($resource) {
         },
         DetailOrder: {
             method: 'GET', params: { action: 'DetailOrder' }
+        },
+        //add table service
+        GetTable: {
+            method: 'GET', params: {action: 'GetTable' }
         }
     });
 });
