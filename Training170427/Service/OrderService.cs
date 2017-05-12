@@ -82,5 +82,17 @@ namespace Training170427.Service
             data.OrderItem = orderitem;
             return data;
         }
+
+        public List<Models.TableViewModel> Table()
+        {
+            var table = (from a in db.Table
+                         where a.IsDeleted != true && a.TableStatus == "NotOccupied"
+                         select new TableViewModel
+                         {
+                             TableID = a.TableID,
+                             TableName = a.TableName
+                         }).ToList();
+            return Table();
+        }
     }
 }

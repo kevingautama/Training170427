@@ -34,6 +34,14 @@ namespace Training170427.Controllers
             return data;
         }
 
+        [HttpGet]
+        [Route("Table")]
+        public List<Models.TableViewModel> GetTable()
+        {
+            var data = service.Table();
+            return data;
+        }
+
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
