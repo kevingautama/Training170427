@@ -59,12 +59,27 @@ controller.controller('testcontroller', function ($scope, testservice) {
         
     };
 
-    $scope.Pay = function (id) {
-        console.log(id + " Triggered");
-        $scope.pay = {};
-        $scope.pay = $scope.detailorder;
+    $scope.Pay = function () {
+        //console.log(id + " Triggered");
+        //$scope.pay = {};
+        //$scope.pay = $scope.detailorder;
 
-        console.log($scope.pay);
+        //console.log($scope.pay);
+        $scope.pay = true;
+    };
+    $scope.CancelPay = function () {
+     
+        $scope.pay = false;
+    };
+
+    $scope.GoPay = function (id,uang) {
+        
+        console.log(id + "," + uang);
+        if (uang > grandTotal) {
+            console.log("uang cukup");
+        } else {
+            console.log("uang tidak cukup");
+        }
     };
 
     $scope.cancel = function (orderItemId, orderId) {
@@ -87,6 +102,7 @@ controller.controller('testcontroller', function ($scope, testservice) {
     $scope.GetTable = function () {       
         testservice.GetTable({}, function (data) {
             $scope.dataTable = data;
+            console.log(data);
         });        
     }
 

@@ -18,7 +18,7 @@ service.factory('testservice', function ($resource) {
         ,
         //add table service
         GetTable: {
-            method: 'GET', isArray:true, params: { action: 'Table' }
+            method: 'GET', isArray:true, params: { action: 'Table' }    
         }
     });
 });
