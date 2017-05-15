@@ -36,6 +36,14 @@ namespace Training170427.Controllers
             return data;
         }
 
+        //[HttpGet]
+        //[Route("ChooseMenu/{id}")]
+        //public Models.AddOrder ChooseMenu(int? TableID)
+        //{
+        //    var data = service.ChooseMenu(TableID);
+        //    return data;
+        //}
+
         [HttpGet]
         [Route("Table")]
         public List<Models.TableViewModel> GetTable()
@@ -79,7 +87,7 @@ namespace Training170427.Controllers
                 return new ResponseViewModel { Status = false }; ;
             }
         }
-
+        
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)

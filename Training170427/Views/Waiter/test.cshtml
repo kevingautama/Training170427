@@ -268,18 +268,33 @@
 </div>
 
 <div tabindex="-1" id="myModal2" class="modal fade" role="dialog">
-    <div class="modal-dialog" style="width:70%">
+    <div class="modal-dialog" style="width:60%">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Choose Menu</h4>
+                <h4 class="modal-title">Table 1</h4>
+                <p>Choose Menu</p>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="height:450px;">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="tabbable">
+                    <div class="col-lg-4">
+                        @*drag and drop kak ria*@
+                        <uib-tabset active="active">
+                            <uib-tab ng-repeat="tab in Category" heading="{{tab.CategoryName}}">
+                                <ul style="padding-left:10px;" dnd-list="tab.MenuItems">
+                                    <li class="columnangular scroll" ng-repeat="item in tab.Menu"
+                                        dnd-draggable="item"
+                                        dnd-effect-allowed="copy"
+                                        dnd-moved="tab.MenuItems.splice($index, 1)"
+                                        dnd-selected="models.selected = item">
+                                        {{item.MenuName}}
+                                    </li>
+                                </ul>
+                            </uib-tab>
+                        </uib-tabset>                        
+                        @*<div class="tabbable">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#food" data-toggle="tab">Food</a></li>
                                 <li><a href="#drink" data-toggle="tab">Drink</a></li>
@@ -287,63 +302,26 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="food">
                                     <div class="row rows scroll">
-                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">
-                                            <div class="col-lg-4">
+                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">                                            
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <h4>Nasi Goreng</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
                                         </div>
                                     </div>
@@ -351,182 +329,186 @@
                                 <div class="tab-pane" id="drink">
                                     <div class="row rows scroll">
                                         <div class="row rows" style="padding-left:20px; padding-top:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
-                                        </div>
-                                        <br />
-                                        <div class="row rows" style="padding-left:20px;">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-6">
                                                 <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                            </div>
-                                            <div class="col-lg-4">
                                                 <h4>Ice Tea</h4>
-                                                <p>Price :  Rp. 10000</p>
+                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
+                        @*<div class="panel-heading">Ordered</div>
+                        <div class="panel-body">
+                            <ul dnd-list="orderedItems" style="height: 70px;">
+                                <li class="columnangular" ng-repeat="item in orderedItems"
+                                    dnd-draggable="item"
+                                    dnd-effect-allowed="move"
+                                    dnd-moved="orderedItems.splice($index, 1)"
+                                    dnd-selected="models.selected = item">
+                                    {{item.MenuName}}
+                                </li>
+                            </ul>
+                        </div>*@
                         <div class="tabbable">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#fooddetail" data-toggle="tab">Your Order</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div id="fooddetail" class="tab-pane active scroll">
-                                    <table class="table table-responsive">
+                                <div id="fooddetail" class="tab-pane active scroll" style="height:300px;">
+                                    <ul dnd-list="orderedItems" style="height: 70px; list-style-type:none; padding-left:0px;">
+                                        <li @*ng-repeat="item in orderedItems"
+                                            dnd-draggable="item"
+                                            dnd-effect-allowed="move"
+                                            dnd-moved="orderedItems.splice($index, 1)"
+                                            dnd-selected="models.selected = item"*@>
+                                            <table class="table table-responsive" style="border-bottom-style:hidden">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nama</th>
+                                                        <th>Qty</th>
+                                                        <th>Price</th>
+                                                        <th>Notes</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="item in orderedItems"
+                                                        dnd-draggable="item"
+                                                        dnd-effect-allowed="move"
+                                                        dnd-moved="orderedItems.splice($index, 1)"
+                                                        dnd-selected="models.selected = item">
+                                                        <td>{{item.MenuName}}</td>
+                                                        <td>{{item.Qty}}</td>
+                                                        <td>{{item.MenuPrice}}</td>
+                                                        <td><input type="text" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                    </ul>
+                                    @*<table class="table table-responsive">
                                         <thead>
                                             <tr>
-                                                <td>Nama Makanan</td>
-                                                <td>Qty</td>
-                                                <td>Notes</td>
+                                                <th>Nama</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Notes</th>
+                                                <th></th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                        </thead>*@
+                                        @*<tbody>
                                             <tr>
                                                 <td>Nasi Goreng</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td><input type="text" /></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Nasi Goreng</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Nasi Goreng</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td>Rp. 10000</td>
+                                                <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nasi Goreng</td>
+                                                <td>1</td>
+                                                <td>Rp. 10000</td>
+                                                <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td>Ice Tea</td>
                                                 <td>1</td>
+                                                <td>Rp. 10000</td>
                                                 <td><input type="text" /></td>
+                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
-                                        </tbody>
+                                        </tbody>*@
                                     </table>
                                 </div>
                             </div>
                         </div>
-
-                        @*<div class="row rows scroll">
-                                <div class="row rows" style="padding-left:20px;">
-                                    <div class="col-lg-12">
-                                        <h4>Nasi Goreng 1 <input type="text" placeholder="Notes" /></h4>
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row rows" style="padding-left:20px;">
-                                    <div class="col-lg-4">
-                                        <h3>x 1</h3>
-                                        <input type="text" placeholder="Notes" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row rows" style="padding-left:20px;">
-                                    <div class="col-lg-4">
-                                        <h3>x 1</h3>
-                                        <input type="text" placeholder="Notes" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row rows" style="padding-left:20px;">
-                                    <div class="col-lg-4">
-                                        <h3>x 1</h3>
-                                        <input type="text" placeholder="Notes" />
-                                    </div>
-                                </div>
-                                <br />
-                                <div class="row rows" style="padding-left:20px;">
-                                    <div class="col-lg-4">
-                                        <h3>x 1</h3>
-                                        <input type="text" placeholder="Notes" />
-                                    </div>
-                                </div>
-                            </div>*@
                     </div>
                 </div>
             </div>
