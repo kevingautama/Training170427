@@ -268,7 +268,7 @@
 </div>
 
 <div tabindex="-1" id="myModal2" class="modal fade" role="dialog">
-    <div class="modal-dialog" style="width:60%">
+    <div class="modal-dialog" style="width:70%">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -279,17 +279,19 @@
             </div>
             <div class="modal-body" style="height:450px;">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         @*drag and drop kak ria*@
                         <uib-tabset active="active">
-                            <uib-tab ng-repeat="tab in Category" heading="{{tab.CategoryName}}">
-                                <ul style="padding-left:10px;" dnd-list="tab.MenuItems">
-                                    <li class="columnangular scroll" ng-repeat="item in tab.Menu"
+                            <uib-tab ng-repeat="tab in Category" heading="{{tab.CategoryName}}">                                                        
+                                <ul style="padding-left:10px;" class="scroll" dnd-list="tab.MenuItems" dnd-drop>
+                                    <li class="columnangular" ng-repeat="item in tab.Menu"
                                         dnd-draggable="item"
                                         dnd-effect-allowed="copy"
                                         dnd-moved="tab.MenuItems.splice($index, 1)"
                                         dnd-selected="models.selected = item">
-                                        {{item.MenuName}}
+                                        <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                        <h4>{{item.MenuName}}</h4>
+                                        <p style="font-size:13px;">{{item.MenuPrice}}</p>
                                     </li>
                                 </ul>
                             </uib-tab>
@@ -366,7 +368,7 @@
                         </div>*@
                     </div>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         @*<div class="panel-heading">Ordered</div>
                         <div class="panel-body">
                             <ul dnd-list="orderedItems" style="height: 70px;">
