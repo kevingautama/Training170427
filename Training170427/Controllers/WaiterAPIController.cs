@@ -80,6 +80,13 @@ namespace Training170427.Controllers
             }
         }
 
+        [Route("PayOrder/{id}")]
+        public ResponseViewModel PayOrder(int id)
+        {
+            return service.Pay(id);
+        }
+
+
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)

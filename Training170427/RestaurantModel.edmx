@@ -14,9 +14,9 @@
           <Property Name="BillDate" Type="date" Nullable="false" />
           <Property Name="TotalPrice" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedDate" Type="date" />
+          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedDate" Type="date" />
+          <Property Name="UpdatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -291,9 +291,9 @@
           <Property Name="BillDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Bill_Order" FromRole="Bill" ToRole="Order" />
         </EntityType>
         <EntityType Name="Category">

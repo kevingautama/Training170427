@@ -122,24 +122,25 @@
                             
                         </tr>
                         <tr>
-                            <td colspan="2">@*<button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button>*@</td>
-                            <td></td>
+                            <td>@*<button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button>*@</td>
                             <td><b>Pajak</b></td>
                             <td><b>Rp. {{tax}}</b></td>
+                            <td><b>GrandTotal</b></td>
+                            <td><b>Rp. {{grandTotal+tax}}</b></td>
                    
                             <td>@*<button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"><i class="glyphicon glyphicon-credit-card"></i>Pay </button>*@</td>
                             <td></td>
                         </tr>
-                        <tr>
+                        @*<tr>
                             <td colspan="2"></td>
                             <td></td>
                            
-                            <td><b>GrandTotal</b></td>
-                            <td><b>Rp. {{grandTotal+tax}}</b></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             
                             <td></td>
-                        </tr>
+                        </tr>*@
                         
                         <tr ng-hide="pay === true">
                             <td colspan="3"><button class="btn btn-primary btn-block"><i class="glyphicon glyphicon-print"></i>Print </button></td>
@@ -147,12 +148,15 @@
                         </tr>
                         
                         <tr ng-show="pay === true">
-                            <td colspan="3"></td>
-                            <td colspan="4"> <input type="text" style="width:100%" ng-model="uang" /></td>
+                            <td></td>
+                            <td colspan="2"><input type="text" class="form form-control"  ng-model="uang" /></td>
+                            <td><b>Kembalian </b></td>
+                            <td><b>Rp.{{uang - (grandTotal+tax)}}</b></td>
+                            <td></td>
                         </tr>
                         <tr ng-show="pay === true">
                             <td colspan="3"><button class="btn btn-danger btn-block" ng-click="CancelPay()" >Cancel</button></td>
-                            <td colspan="4"><button class="btn btn-success btn-block" ng-click="GoPay(detailorder.OrderID,uang)">Pay</button> </td>
+                            <td colspan="4"><button class="btn btn-success btn-block" ng-click="GoPay(detailorder.OrderID,uang,grandTotal+tax)">Pay</button> </td>
                         </tr>
                     </table>
                 </div>

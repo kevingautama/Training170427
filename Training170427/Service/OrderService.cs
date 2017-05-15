@@ -119,5 +119,56 @@ namespace Training170427.Service
         //    List<OrderItemViewModel> Menu = new List<OrderItemViewModel>();
 
         //}
+
+        public ResponseViewModel Pay(int id)
+        {
+            Bill bill = new Bill();
+            bill.OrderID = id;
+            bill.BillDate = DateTime.Now;
+            var orderitem = from a in db.OrderItem
+                            where a.OrderID == id && a.IsDeleted != true && a.Status != "Cancel"
+                            select a;
+            double total = 0; 
+            foreach(var item in orderitem)
+            {
+                total = total + (item.Qty * Convert.ToDouble(item.Menu.MenuPrice));
+                
+            }
+            total = (total * 0.1) + total;
+            bill.TotalPrice = total.ToString();
+            bill.CreatedBy = "Admin";
+            bill.CreatedDate = DateTime.Now;
+            db.Bill.Add(bill);
+          
+
+            var order = db.Order.Find(id);
+            order.Finish = true;
+            order.UpdateDate = DateTime.Now;
+            order.UpdatedBy = "Admin";
+            db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+           
+            if (order.Type.TypeName == "Order")
+            {
+                var tableid = (from a in db.Track
+                             where a.OrderID == order.OrderID
+                             select a.TableID).FirstOrDefault();
+                var table = db.Table.Find(tableid);
+                table.TableStatus = "NotOccupied";
+                db.Entry(table).State = System.Data.Entity.EntityState.Modified;
+            }
+            if (db.SaveChanges() > 0)
+            {
+                return new ResponseViewModel
+                {
+                    Status = true
+                };
+            }else
+            {
+                return new ResponseViewModel
+                {
+                    Status = false
+                };
+            }
+        }
     }
 }

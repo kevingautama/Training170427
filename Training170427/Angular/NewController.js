@@ -72,11 +72,20 @@ controller.controller('testcontroller', function ($scope, testservice) {
         $scope.pay = false;
     };
 
-    $scope.GoPay = function (id,uang) {
+    $scope.GoPay = function (id,uang,total) {
         
-        console.log(id + "," + uang);
-        if (uang > grandTotal) {
+        console.log(id + "," + uang +","+total);
+        if (uang > total) {
             console.log("uang cukup");
+            testservice.PayOrder({ id: id }, function (data) {
+                if (data.Status == true) {
+                    console.log("Success");
+                    $scope.order = testservice.GetOrder();
+                    $scope.detailorder = {};
+                } else {
+                    console.log("Failed");
+                }
+            })
         } else {
             console.log("uang tidak cukup");
         }

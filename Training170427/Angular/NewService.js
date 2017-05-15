@@ -16,6 +16,9 @@ service.factory('testservice', function ($resource) {
         },
         GetTable: {
             method: 'GET', isArray:true, params: { action: 'Table' }    
+        },
+        PayOrder: {
+            method: 'POST', params:{ action: 'PayOrder'}
         }
     });
 });
