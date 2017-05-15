@@ -108,11 +108,34 @@ controller.controller('testcontroller', function ($scope, testservice) {
     };   
 
     
-    $scope.GetTable = function () {       
-        testservice.GetTable({}, function (data) {
+    $scope.GetTable = function ()
+    {
+        testservice.GetTable({}, function (data)
+        {
             $scope.dataTable = data;
             console.log(data);
         });        
-    }
+    };
+
+    $scope.Category = [
+        {
+            "CategoryID": 1,
+            "CategoryName": "Food",
+            "Menu": [
+                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
+                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
+            ]
+        },
+        {
+            "CategoryID": 2,
+            "CategoryName": "Drink",
+            "Menu": [
+                { "MenuID": 3, "MenuName": "Ice tea", "Qty": 2, "CategoryID": 2, "MenuPrice": 10000 },
+                { "MenuID": 4, "MenuName": "teh tarek", "Qty": 2, "CategoryID": 2, "MenuPrice": 10000 }
+            ]
+        }
+    ];
+    $scope.orderedItems = [];
+    console.log($scope.orderedItems);
 
 });

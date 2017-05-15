@@ -1,1 +1,1 @@
-﻿angular.module('testApp', ['ngResource', 'testController','testService']);
+﻿angular.module('testApp', ['ngResource', 'testController', 'testService', 'ui.bootstrap', 'dndLists']);
