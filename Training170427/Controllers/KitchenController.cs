@@ -25,7 +25,7 @@ namespace Training170427.Controllers
                 List<OrderItemViewModel> listorderitem = new List<OrderItemViewModel>();
 
                 var hasil = from a in db.OrderItem
-                                where a.OrderID == item.OrderID && a.Status != "FinishCook" && a.Status !="Cancel" && a.IsDeleted != true
+                                where a.OrderID == item.OrderID && a.Status != "FinishCook" && a.Status !="Cancel" && a.IsDeleted != true && a.Status !="Served" && a.Status != "Paid"
                                 select new OrderItemViewModel
                                 {
                                     OrderItemID = a.OrderItemID,
@@ -49,7 +49,12 @@ namespace Training170427.Controllers
                                       select a.Table.TableName).FirstOrDefault();
                 }
                 data.OrderItem = listorderitem;
-                listdata.Add(data);
+
+                if(data.OrderItem.Count > 0)
+                {
+                    listdata.Add(data);
+                }
+                
             }
             return View(listdata);
         }

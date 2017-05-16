@@ -14,6 +14,7 @@ namespace Training170427.Models
         public DateTime? OrderDate { get; set; }
         public string TableName { get; set; }
         public string OrderServed { get; set; }
+        public int Status { get; set; }
         public List<OrderItemViewModel> OrderItem { get; set; }
 
 

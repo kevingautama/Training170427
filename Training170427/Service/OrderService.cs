@@ -50,13 +50,19 @@ namespace Training170427.Service
                                     where a.IsDeleted != true && a.OrderID == item2.OrderID && a.Status != "Cancel"
                                     select a;
                     var i = 0;
+                    var ii = 0;
                     foreach (var item3 in orderitem)
                     {
                         if (item3.Status == "Served")
                         {
                             i++;
                         }
+                        if( item3.Status == "FinishCook")
+                        {
+                            ii++;
+                        }
                     }
+                    data.Status = ii;
                     data.OrderServed = i + "/" + orderitem.Count();
                     listorder.Add(data);
                 }
@@ -156,6 +162,8 @@ namespace Training170427.Service
             foreach(var item in orderitem)
             {
                 total = total + (item.Qty * Convert.ToDouble(item.Menu.MenuPrice));
+                item.Status = "Paid";
+                db.Entry(item).State = System.Data.Entity.EntityState.Modified;
                 
             }
             total = (total * 0.1) + total;
@@ -163,7 +171,8 @@ namespace Training170427.Service
             bill.CreatedBy = "Admin";
             bill.CreatedDate = DateTime.Now;
             db.Bill.Add(bill);
-          
+           
+            
 
             var order = db.Order.Find(id);
             order.Finish = true;

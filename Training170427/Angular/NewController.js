@@ -10,6 +10,7 @@ controller.controller('testcontroller', function ($scope, testservice) {
 
     $scope.DetailOrder = function (id) {
         console.log(id);
+        $scope.pay = false;
         testService.$DetailOrder({ id: id }, function (data) {
             $scope.test = false;
             $scope.detailorder = data;
@@ -66,6 +67,16 @@ controller.controller('testcontroller', function ($scope, testservice) {
 
         //console.log($scope.pay);
         $scope.pay = true;
+        angular.forEach($scope.detailorder.OrderItem, function (item) {
+            if (item.Status != 'Served') {
+                console.log(item.Status)
+                $scope.pay = false;
+            }
+        })
+        if ($scope.pay == false) {
+            alert('semuang makanan belum dihidang');
+        }
+       
     };
     $scope.CancelPay = function () {
      
@@ -74,14 +85,14 @@ controller.controller('testcontroller', function ($scope, testservice) {
 
     $scope.GoPay = function (id,uang,total) {
         
-        console.log(id + "," + uang +","+total);
+        console.log(id + "," + uang + "," + total);
         if (uang > total) {
             console.log("uang cukup");
             testservice.PayOrder({ id: id }, function (data) {
                 if (data.Status == true) {
                     console.log("Success");
                     $scope.order = testservice.GetOrder();
-                    $scope.detailorder = {};
+                    $scope.detailorder = null;
                 } else {
                     console.log("Failed");
                 }
