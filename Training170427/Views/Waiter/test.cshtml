@@ -23,9 +23,9 @@
     }
 
     .scroll {
-        overflow-y: auto;
+        overflow-y: scroll;
         overflow-x: hidden;
-        max-height: 55vh;
+        max-height: 50vh;
     }
 
     .konten {
@@ -330,26 +330,23 @@
                 <h4 class="modal-title">Table 1</h4>
                 <p>Choose Menu</p>
             </div>
-            <div class="modal-body" style="height:480px;">
+            <div class="modal-body" style="height:450px;">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         @*drag and drop kak ria*@
                         <uib-tabset active="active">
-                            <uib-tab ng-repeat="tab in Category" heading="{{tab.CategoryName}}">                
-                                <div class="row rows" style="padding-left:10px; padding-top:20px;">
-                                    <ul style="padding-left:10px;" class="scroll" dnd-list="tab.MenuItems">
-                                        <li class="columnangular" ng-repeat="item in tab.Menu"
-                                            dnd-draggable="item"
-                                            dnd-effect-allowed="copy"
-                                            dnd-moved="tab.MenuItems.splice($index, 1)"
-                                            dnd-selected="models.selected = item"
-                                            style="display:inline-block; padding-right:30px">
-                                            <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                            <h4 style="text-align:center">{{item.MenuName}}</h4>
-                                            <p style="font-size:13px; text-align:center;">{{item.MenuPrice}}</p>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <uib-tab ng-repeat="tab in Category" heading="{{tab.CategoryName}}">                                                        
+                                <ul style="padding-left:10px;" class="scroll" dnd-list="tab.MenuItems" dnd-drop>
+                                    <li class="columnangular" ng-repeat="item in tab.Menu"
+                                        dnd-draggable="item"
+                                        dnd-effect-allowed="copy"
+                                        dnd-moved="tab.MenuItems.splice($index, 1)"
+                                        dnd-selected="models.selected = item">
+                                        <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
+                                        <h4>{{item.MenuName}}</h4>
+                                        <p style="font-size:13px;">{{item.MenuPrice}}</p>
+                                    </li>
+                                </ul>
                             </uib-tab>
                         </uib-tabset>                        
                         @*<div class="tabbable">
@@ -424,7 +421,7 @@
                         </div>*@
                     </div>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
                         @*<div class="panel-heading">Ordered</div>
                         <div class="panel-body">
                             <ul dnd-list="orderedItems" style="height: 70px;">
@@ -442,13 +439,13 @@
                                 <li class="active"><a href="#fooddetail" data-toggle="tab">Your Order</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div id="fooddetail" class="tab-pane active scroll" style="height:50vh;">
-                                    @*<ul dnd-list="orderedItems" style="height: 80px; list-style-type:none; padding-left:0px;">
-                                        <li ng-repeat="item in orderedItems"
+                                <div id="fooddetail" class="tab-pane active scroll" style="height:300px;">
+                                    <ul dnd-list="orderedItems" style="height: 70px; list-style-type:none; padding-left:0px;">
+                                        <li @*ng-repeat="item in orderedItems"
                                             dnd-draggable="item"
                                             dnd-effect-allowed="move"
                                             dnd-moved="orderedItems.splice($index, 1)"
-                                            dnd-selected="models.selected = item">*@
+                                            dnd-selected="models.selected = item"*@>
                                             <table class="table table-responsive" style="border-bottom-style:hidden">
                                                 <thead>
                                                     <tr>
@@ -459,26 +456,21 @@
                                                         <th></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody dnd-list="orderedItems" dnd-drop="addqty(item)">
+                                                <tbody>
                                                     <tr ng-repeat="item in orderedItems"
                                                         dnd-draggable="item"
                                                         dnd-effect-allowed="move"
-                                                        @*dnd-moved="orderedItems.splice($index, 1)"*@
-                                                        dnd-selected="models.selected = item"
-                                                        >
+                                                        dnd-moved="orderedItems.splice($index, 1)"
+                                                        dnd-selected="models.selected = item">
                                                         <td>{{item.MenuName}}</td>
                                                         <td>{{item.Qty}}</td>
                                                         <td>{{item.MenuPrice}}</td>
                                                         <td><input type="text" /></td>
-                                                        <td><button class="btn btn-primary" style="height:4vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                        @*</li>
-                                    </ul>*@
+                                        </li>
+                                    </ul>
                                     @*<table class="table table-responsive">
                                         <thead>
                                             <tr>
