@@ -134,7 +134,11 @@ controller.controller('testcontroller', function ($scope, testservice) {
             "CategoryName": "Food",
             "Menu": [
                 { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
+                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
+                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
+                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
+                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
+                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
             ]
         },
         {
@@ -148,5 +152,32 @@ controller.controller('testcontroller', function ($scope, testservice) {
     ];
     $scope.orderedItems = [];
     console.log($scope.orderedItems);
+
+    $scope.addqty = function (item) {
+        $scope.cek = false;
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (item.MenuID == obj.MenuID) {
+                $scope.cek = true;
+                obj.Qty = obj.Qty + 1;
+            } 
+        })
+        if ($scope.cek == false) {
+            $scope.orderedItems.push(item);
+        }
+    };
+
+    $scope.delqty = function (MenuID, index) {
+        console.log(MenuID);
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (MenuID == obj.MenuID) {
+                $scope.cek = true;
+                if (obj.Qty == 1) {
+                    $scope.orderedItems.splice(index, 1);
+                } else {
+                    obj.Qty = obj.Qty - 1;
+                }                                              
+            }
+        })
+    }
 
 });
