@@ -1,7 +1,7 @@
 ﻿var controller = angular.module('testController', []);
 controller.controller('testcontroller', function ($scope, testservice,kitchenservice) {
     var testService = new testservice();
-
+    var kitchenService = new kitchenservice();
     $scope.grandTotal = 0;
 
     $scope.detailorder = {};
@@ -74,7 +74,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             }
         })
         if ($scope.pay == false) {
-            alert('semuang makanan belum dihidang');
+            alert('semua makanan belum dihidang');
         }
        
     };
@@ -86,7 +86,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     $scope.GoPay = function (id,uang,total) {
         
         console.log(id + "," + uang + "," + total);
-        if (uang > total) {
+        if (uang >= total) {
             console.log("uang cukup");
             testservice.PayOrder({ id: id }, function (data) {
                 if (data.Status == true) {
@@ -99,6 +99,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             })
         } else {
             console.log("uang tidak cukup");
+            alert('uang tidak mencukupi');
         }
     };
 
@@ -181,6 +182,48 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     //----------------------------------------Kitchen------------------------------------------------------------
 
     $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+
+    $scope.CancelOrderItem = function (id) {
+        console.log(id);
+        kitchenservice.CancelOrderItem({ id: id }, function (data) {
+            if (data.Status == true) {
+                console.log("Success");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            } else {
+                console.log("Failed");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            }
+        })
+       
+    }
+
+    $scope.CookOrderItem = function (id) {
+        console.log(id);
+        kitchenservice.CookOrderItem({ id: id }, function (data) {
+            if (data.Status == true) {
+                console.log("Success");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            } else {
+                console.log("Failed");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            }
+        })
+       
+    }
+
+    $scope.FinishOrderItem = function (id) {
+        console.log(id);
+        kitchenservice.FinishOrderItem({ id: id }, function (data) {
+            if (data.Status == true) {
+                console.log("Success");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            } else {
+                console.log("Failed");
+                $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+            }
+        })
+        
+    }
 
 
 });

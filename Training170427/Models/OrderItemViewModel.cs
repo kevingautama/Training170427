@@ -16,6 +16,7 @@ namespace Training170427.Models
         public int Qty { get; set; }
         public string Status { get; set; }
         public string TypeName { get; set; }
+        public DateTime? Time { get; set; }
         public byte[] Content { get; set; }
         public string ContentType { get; set; }
     }

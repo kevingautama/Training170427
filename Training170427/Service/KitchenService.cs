@@ -29,7 +29,8 @@ namespace Training170427.Service
                                     MenuName = a.Menu.MenuName,
                                     Notes = a.Notes,
                                     Qty =a.Qty,
-                                    OrderID = a.OrderID
+                                    OrderID = a.OrderID,
+                                    Time = a.CreatedDate
                                 }).ToList();
                 foreach(var item2 in orderitem)
                 {

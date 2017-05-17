@@ -6,61 +6,37 @@
 
 <h2>Kitchen</h2>
 
-<div class="col-md-6">
+<div class="col-md-6" ng-repeat="data in kitchenorderitem">
     <div class="panel panel-primary ">
         <div class="panel-heading">
-            <h3 class="panel-title">Order</h3>
+            <h3 class="panel-title">{{data.Status}}</h3>
         </div>
         <div class="panel-body">
-            <table class="table table-hover">
+            <table ng-if="data.OrderItem != false" class="table table-hover">
                 <tr>
-                    <td>Nama</td>
-                    <td>Qty</td>
-                    <td>Notes</td>
-                    <td>Type</td>
-                    <td>Action</td>
+                    <th>Nama</th>
+                    <th></th>
+                    <th>Qty</th>
+                    <th>Notes</th>
+                    <th>Type</th>
+                    <th></th>
                 </tr>
-                @for (var i = 0; i < 5; i++)
-                {
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>2</td>
-                        <td>Pedas</td>
-                        <td>Order</td>
-                        <td>Cancel</td>
+               
+                    <tr ng-repeat="item in data.OrderItem">
+                        <td>{{item.MenuName}}</td>
+                        <td><span class="label label-primary">{{item.Time| date: 'HH:mm'}}</span></td>
+                        <td>{{item.Qty}}</td>
+                        <td>{{item.Notes}}</td>
+                        <td>{{item.TypeName}}</td>
+                        <td>
+                            @*<button ng-if="data.Status == 'Order'" class="btn btn-danger" ng-click="CancelOrderItem(item.OrderItemID)">Cancel</button>*@
+                            <button ng-if="data.Status == 'Order'" class="btn btn-primary" ng-click="CookOrderItem(item.OrderItemID)">Cook</button>
+                            <button ng-if="data.Status == 'Cook'" class="btn btn-success" ng-click="FinishOrderItem(item.OrderItemID)">Done</button>
+                        </td>
                     </tr>
-                }
-
             </table>
+            <center ng-if="data.OrderItem == false"><h2>Empty List</h2></center>
         </div>
     </div>
 </div>
-<div class="col-md-6">
-    <div class="panel panel-primary ">
-        <div class="panel-heading">
-            <h3 class="panel-title">Cook</h3>
-        </div>
-        <div class="panel-body">
-            <table class="table table-hover">
-                <tr>
-                    <td>Nama</td>
-                    <td>Qty</td>
-                    <td>Notes</td>
-                    <td>Type</td>
-                    <td>Action</td>
-                </tr>
-                @for (var i = 0; i < 5; i++)
-                {
-                    <tr>
-                        <td>Nasi Goreng</td>
-                        <td>2</td>
-                        <td>Pedas</td>
-                        <td>Order</td>
-                        <td>Cancel</td>
-                    </tr>
-                }
 
-            </table>
-        </div>
-    </div>
-</div>

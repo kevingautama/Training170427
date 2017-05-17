@@ -26,7 +26,16 @@ service.factory('testservice', function ($resource) {
 service.factory('kitchenservice', function ($resource) {
     return $resource('/api/KitchenAPI/:action/:id', { id: '@id' }, {
         GetAllOrderItem: {
-            method: 'GET', isArray: true
+            method: 'GET', isArray: true, params: { action: 'GetAllOrderItem'}
+        },
+        CancelOrderItem: {
+            method : 'POST', params:{action: 'CancelOrderItem'}
+        },
+        CookOrderItem: {
+            method: 'POST', params:{action : 'CookOrderItem'}
+        },
+        FinishOrderItem: {
+            method: 'POST', params:{action : 'FinishOrderItem'}
         }
     });
 });
