@@ -1,5 +1,5 @@
 ﻿var controller = angular.module('testController', []);
-controller.controller('testcontroller', function ($scope, testservice) {
+controller.controller('testcontroller', function ($scope, testservice,kitchenservice) {
     var testService = new testservice();
 
     $scope.grandTotal = 0;
@@ -148,5 +148,12 @@ controller.controller('testcontroller', function ($scope, testservice) {
     ];
     $scope.orderedItems = [];
     console.log($scope.orderedItems);
+
+
+
+    //----------------------------------------Kitchen------------------------------------------------------------
+
+    //$scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+
 
 });

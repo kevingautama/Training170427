@@ -23,3 +23,13 @@ service.factory('testservice', function ($resource) {
     });
 });
 
+service.factory('kitchenservice', function ($resource) {
+    return $resource('/api/KitchenAPI/:action/:id', { id: '@id' }, {
+        GetAllOrderItem: {
+            method: 'GET', isArray: true
+        }
+    });
+});
+
+
+
