@@ -85,5 +85,11 @@ namespace Training170427.Controllers
             db.SaveChanges();
             return RedirectToAction("index");
         }
+
+
+        public ActionResult IndexAPI()
+        {
+            return View();
+        }
     }
 }

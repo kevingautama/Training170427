@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "kitchentest";
+    Layout = "~/Views/Shared/_test.cshtml";
+}
+
+<h2>Kitchen</h2>
+
+<div class="col-md-6">
+    <div class="panel panel-primary ">
+        <div class="panel-heading">
+            <h3 class="panel-title">Order</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr>
+                    <td>Nama</td>
+                    <td>Qty</td>
+                    <td>Notes</td>
+                    <td>Type</td>
+                    <td>Action</td>
+                </tr>
+                @for (var i = 0; i < 5; i++)
+                {
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>2</td>
+                        <td>Pedas</td>
+                        <td>Order</td>
+                        <td>Cancel</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="panel panel-primary ">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cook</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr>
+                    <td>Nama</td>
+                    <td>Qty</td>
+                    <td>Notes</td>
+                    <td>Type</td>
+                    <td>Action</td>
+                </tr>
+                @for (var i = 0; i < 5; i++)
+                {
+                    <tr>
+                        <td>Nasi Goreng</td>
+                        <td>2</td>
+                        <td>Pedas</td>
+                        <td>Order</td>
+                        <td>Cancel</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

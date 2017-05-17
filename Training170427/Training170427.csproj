@@ -168,6 +168,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KitchenAPIController.cs" />
     <Compile Include="Controllers\KitchenController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\AddOrder.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CheckOutModel.cs" />
+    <Compile Include="Models\KitchenViewModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderItemViewModel.cs" />
@@ -213,6 +215,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Service\KitchenService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Status.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
@@ -1062,7 +1065,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\ui-bootstrap.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1121,6 +1126,7 @@
     <Content Include="Views\Waiter\test.cshtml" />
     <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Kitchen\IndexAPI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

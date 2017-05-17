@@ -1,5 +1,5 @@
 ﻿var controller = angular.module('testController', []);
-controller.controller('testcontroller', function ($scope, testservice) {
+controller.controller('testcontroller', function ($scope, testservice,kitchenservice) {
     var testService = new testservice();
 
     $scope.grandTotal = 0;
@@ -134,11 +134,7 @@ controller.controller('testcontroller', function ($scope, testservice) {
             "CategoryName": "Food",
             "Menu": [
                 { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
+                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
             ]
         },
         {
@@ -179,5 +175,12 @@ controller.controller('testcontroller', function ($scope, testservice) {
             }
         })
     }
+
+
+
+    //----------------------------------------Kitchen------------------------------------------------------------
+
+    $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+
 
 });

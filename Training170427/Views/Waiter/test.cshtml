@@ -43,9 +43,9 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div ng-repeat="type in order">
+        <div ng-repeat="type in order" >
             <h4>{{type.TypeName}}  <button data-toggle="modal" data-target="#myModal" ng-click="GetTable()"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button></h4>
-            <div class="row" style="overflow: auto; max-height:50vh">
+            <div class="row" style="overflow: auto; max-height:50vh ; ">
 
                 <div ng-show="type.Order != null" class="col-md-4" ng-repeat="data in type.Order">
                     <div ng-if="data.Status == 0">
@@ -55,7 +55,7 @@
                         <button class="btn btn-warning btn-lg  btn-block" ng-click="DetailOrder(data.OrderID)"><i class="glyphicon glyphicon-cutlery "></i> {{data.TableName}}{{data.Name}} <span class="badge">{{data.OrderServed}}</span></button>
                     </div>
                 </div>
-                <div ng-show="type.Order == false" class="col-md-4" ng-repeat="data in type.Order">
+                <div  ng-hide="type.Order != false"  class="col-md-4">
                    <h1>asdfdsfasdf</h1>
                 </div>
                 @*<div class="col-md-4" ng-repeat="data in type.Order">
