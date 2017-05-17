@@ -149,11 +149,38 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     $scope.orderedItems = [];
     console.log($scope.orderedItems);
 
+    $scope.addqty = function (item) {
+        $scope.cek = false;
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (item.MenuID == obj.MenuID) {
+                $scope.cek = true;
+                obj.Qty = obj.Qty + 1;
+            } 
+        })
+        if ($scope.cek == false) {
+            $scope.orderedItems.push(item);
+        }
+    };
+
+    $scope.delqty = function (MenuID, index) {
+        console.log(MenuID);
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (MenuID == obj.MenuID) {
+                $scope.cek = true;
+                if (obj.Qty == 1) {
+                    $scope.orderedItems.splice(index, 1);
+                } else {
+                    obj.Qty = obj.Qty - 1;
+                }                                              
+            }
+        })
+    }
+
 
 
     //----------------------------------------Kitchen------------------------------------------------------------
 
-    //$scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+    $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
 
 
 });
