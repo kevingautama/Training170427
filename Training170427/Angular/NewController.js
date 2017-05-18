@@ -129,6 +129,31 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         });        
     };
 
+    //$scope.NewOrder = function (TableID, TableName) {
+    //    console.log(TableID, " + ", TableName);
+
+    //    //service check typeid 
+    //    //return boolean true butuh table id false ga butuh table id
+
+
+
+    //    testservice.typename({ typeid }, function (ret) {
+
+    //        if (ret) {
+    //            testservice.Category({ typeid , ytbleid}, function () {
+
+    //            })
+    //        } else if (false) {
+    //            testservice.Category({ typeid }, function () {
+
+    //            })
+    //        }
+            
+    //    })
+    //}
+
+    //drag and drop cart//
+
     $scope.Category = [
         {
             "CategoryID": 1,
@@ -177,7 +202,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         })
     }
 
-
+    //drag and drop cart//
 
     //----------------------------------------Kitchen------------------------------------------------------------
 
