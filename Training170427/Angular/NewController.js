@@ -118,7 +118,6 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         })
 
     };   
-
     
     $scope.GetTable = function ()
     {
@@ -129,80 +128,15 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         });        
     };
 
-    //$scope.NewOrder = function (TableID, TableName) {
-    //    console.log(TableID, " + ", TableName);
-
-    //    //service check typeid 
-    //    //return boolean true butuh table id false ga butuh table id
-
-
-
-    //    testservice.typename({ typeid }, function (ret) {
-
-    //        if (ret) {
-    //            testservice.Category({ typeid , ytbleid}, function () {
-
-    //            })
-    //        } else if (false) {
-    //            testservice.Category({ typeid }, function () {
-
-    //            })
-    //        }
-            
-    //    })
-    //}
-
-    //drag and drop cart//
-
-    $scope.Category = [
+    $scope.GetMenu = function (TableID) {
+        console.log("tes");
+        testservice.GetMenu({TableID}, function (data)
         {
-            "CategoryID": 1,
-            "CategoryName": "Food",
-            "Menu": [
-                { "MenuID": 1, "MenuName": "Nasi Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 },
-                { "MenuID": 2, "MenuName": "Mie Goreng", "Qty": 2, "CategoryID": 1, "MenuPrice": 10000 }
-            ]
-        },
-        {
-            "CategoryID": 2,
-            "CategoryName": "Drink",
-            "Menu": [
-                { "MenuID": 3, "MenuName": "Ice tea", "Qty": 2, "CategoryID": 2, "MenuPrice": 10000 },
-                { "MenuID": 4, "MenuName": "teh tarek", "Qty": 2, "CategoryID": 2, "MenuPrice": 10000 }
-            ]
-        }
-    ];
-    $scope.orderedItems = [];
-    console.log($scope.orderedItems);
-
-    $scope.addqty = function (item) {
-        $scope.cek = false;
-        angular.forEach($scope.orderedItems, function (obj) {
-            if (item.MenuID == obj.MenuID) {
-                $scope.cek = true;
-                obj.Qty = obj.Qty + 1;
-            } 
-        })
-        if ($scope.cek == false) {
-            $scope.orderedItems.push(item);
-        }
-    };
-
-    $scope.delqty = function (MenuID, index) {
-        console.log(MenuID);
-        angular.forEach($scope.orderedItems, function (obj) {
-            if (MenuID == obj.MenuID) {
-                $scope.cek = true;
-                if (obj.Qty == 1) {
-                    $scope.orderedItems.splice(index, 1);
-                } else {
-                    obj.Qty = obj.Qty - 1;
-                }                                              
-            }
+            console.log(TableID);
+            $scope.menu = data;
+            console.log(data);
         })
     }
-
-    //drag and drop cart//
 
     //----------------------------------------Kitchen------------------------------------------------------------
 

@@ -94,21 +94,13 @@ namespace Training170427.Controllers
             return service.Pay(id);
         }
 
-        //[HttpGet]
-        //[Route("CategoryTakeAway/{TypeID}/{TableID}")]
-        //public Models.AddOrder Category(int TypeID, int? TableID)
-        //{
-        //    var data = service.Category(TypeID, TableID);
-        //    return data;
-        //}
-        
-        //[Route("Type/{TypeID}")]
-        //public ResponseViewModel Category(int TypeID)
-        //{
-        //    var data = service.Category(TypeID);
-        //    return data;
-        //}
-
+        [HttpGet]
+        [Route("GetMenu/{id}")]
+        public AddOrder GetMenu(int? TableID)
+        {
+            var data = service.Menu(TableID);
+            return data;
+        }
 
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]

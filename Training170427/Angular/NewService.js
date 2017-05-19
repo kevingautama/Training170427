@@ -20,9 +20,9 @@ service.factory('testservice', function ($resource) {
         PayOrder: {
             method: 'POST', params:{ action: 'PayOrder'}
         },
-        //NewOrder: {
-        //    method: 'GET', isArray: true, params: { action: 'Category' }
-        //}
+        GetMenu: {
+            method: 'GET', params:{ action: 'GetMenu'}
+        }
     });
 });
 
