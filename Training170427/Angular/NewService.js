@@ -15,7 +15,7 @@ service.factory('testservice', function ($resource) {
             method: 'POST', params:{ action: 'CancelOrder'}
         },
         GetTable: {
-            method: 'GET', isArray:true, params: { action: 'Table' }    
+            method: 'POST', isArray:true, params: { action: 'Table' }    
         },
         PayOrder: {
             method: 'POST', params:{ action: 'PayOrder'}

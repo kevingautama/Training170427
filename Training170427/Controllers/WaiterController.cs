@@ -101,7 +101,7 @@ namespace Training170427.Controllers
         public ActionResult Create()
         {
             ViewBag.TypeID = new SelectList(db.Type, "TypeID", "TypeName");
-            return View();
+            return View();            
         }
 
         [HttpPost]

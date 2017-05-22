@@ -175,13 +175,14 @@ namespace Training170427.Service
             }
         }
 
-        public AddOrder Menu()
+        public AddOrder Menu(int? id)
         {
-            Models.AddOrder AddOrder = new Models.AddOrder();       
+            Models.AddOrder AddOrder = new Models.AddOrder();
+            AddOrder.TableID = id;
 
-            var category = (from a in db.Category
-                            where a.IsDeleted != true
-                            select a);
+            var category = from a in db.Category
+                           where a.IsDeleted != true
+                           select a;
 
             List<Models.CategoryViewModel> ListCategoryViewModel = new List<Models.CategoryViewModel>();
             foreach (var item in category)
