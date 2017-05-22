@@ -91,20 +91,5 @@ namespace Training170427.Controllers
         {
             return View();
         }
-
-        public ActionResult IndexAPI2()
-        {
-            return View();
-        }
-
-        public ActionResult IndexAPI3()
-        {
-            return View();
-        }
-
-        public ActionResult PrintOrderItem()
-        {
-            return View();
-        }
     }
 }

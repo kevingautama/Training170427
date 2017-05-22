@@ -1128,9 +1128,6 @@
     <Content Include="Views\Shared\_test.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Kitchen\IndexAPI.cshtml" />
-    <Content Include="Views\Kitchen\PrintOrderItem.cshtml" />
-    <Content Include="Views\Kitchen\IndexAPI2.cshtml" />
-    <Content Include="Views\Kitchen\IndexAPI3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
