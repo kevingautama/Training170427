@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "PrintOrderItem";
+    Layout = "~/Views/Shared/_test.cshtml";
+}
+
+
+<div class="col-md-2" id="print" style="border:1px solid black;width:30%">
+    <center><h4>PrintOrder - Table 3</h4></center>
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Nama</th>
+            <th>Qty</th>
+        </tr>
+        <tr>
+            <td>Nasi Goreng</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Mie Goreng</td>
+            <td>2</td>
+        </tr>
+    </table>
+</div>
+<script>
+    
+    var printContents = document.getElementById('print').innerHTML;
+                var popupWin = window;
+                popupWin.document.open();
+                popupWin.document.write('<html><head><title>SSI Support List</title>'
+                    + '<link href="~/Content/bootstrap.css" rel="stylesheet" />'
+                    + '</head><body onload="window.print()">' + printContents + '</body></html>');
+</script>

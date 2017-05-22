@@ -11,6 +11,7 @@ namespace Training170427.Models
         public string Name { get; set; }
         public int? TableID { get; set; }
         public int TypeID { get; set; }
+        public string TypeName { get; set; }
         public DateTime? OrderDate { get; set; }
         public string TableName { get; set; }
         public string OrderServed { get; set; }

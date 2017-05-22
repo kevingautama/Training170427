@@ -75,5 +75,23 @@ namespace Training170427.Controllers
                 return new ResponseViewModel { Status = false };
             }
         }
+
+        [Route("GetAllOrderItemCateByOrder")]
+        public List<KitchenViewModel> GetAllOrderItemCateByOrder()
+        {
+            return service.GetAllOrderItemCateByOrder();
+        }
+
+        [Route("GetAllOrder")]
+        public List<Models.Order> GetAllOrder()
+        {
+            return service.GetAllOrder();
+        }
+
+        [Route("GetOrderItemByOrderID/{id}")]
+        public List<KitchenViewModel> GetOrderItemByOrderID(int id)
+        {
+            return service.GetOrderItemByOrderID(id);
+        }
     }
 }

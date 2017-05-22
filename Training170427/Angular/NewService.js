@@ -36,6 +36,15 @@ service.factory('kitchenservice', function ($resource) {
         },
         FinishOrderItem: {
             method: 'POST', params:{action : 'FinishOrderItem'}
+        },
+        GetAllOrderItemCateByOrder: {
+            method: 'GET', isArray: true, params: { action: 'GetAllOrderItemCateByOrder'}
+        },
+        GetAllOrder: {
+            method: 'GET' , isArray: true , params: {action: 'GetAllOrder'}
+        },
+        GetOrderItemByOrderID: {
+            method: 'GET' , isArray: true , params: {action : 'GetOrderItemByOrderID'}
         }
     });
 });
