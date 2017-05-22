@@ -183,6 +183,9 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
 
     $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
 
+    $scope.kitchenorderitemcatebyorder = kitchenservice.GetAllOrderItemCateByOrder();
+    $scope.kitchenorder = kitchenservice.GetAllOrder();
+
     $scope.CancelOrderItem = function (id) {
         console.log(id);
         kitchenservice.CancelOrderItem({ id: id }, function (data) {
@@ -203,9 +206,11 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             if (data.Status == true) {
                 console.log("Success");
                 $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+                $scope.kitchenorderitemcatebyorder = kitchenservice.GetAllOrderItemCateByOrder();
             } else {
                 console.log("Failed");
                 $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+                $scope.kitchenorderitemcatebyorder = kitchenservice.GetAllOrderItemCateByOrder();
             }
         })
        
@@ -217,13 +222,23 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             if (data.Status == true) {
                 console.log("Success");
                 $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+                $scope.kitchenorderitemcatebyorder = kitchenservice.GetAllOrderItemCateByOrder();
             } else {
                 console.log("Failed");
                 $scope.kitchenorderitem = kitchenservice.GetAllOrderItem();
+                $scope.kitchenorderitemcatebyorder = kitchenservice.GetAllOrderItemCateByOrder();
             }
         })
         
     }
+
+    $scope.GetOrderItemByOrderID = function (id) {
+        console.log(id);
+        $scope.orderitem = kitchenservice.GetOrderItemByOrderID({ id: id });
+        console.log($scope.orderitem);
+    }
+
+    
 
 
 });
