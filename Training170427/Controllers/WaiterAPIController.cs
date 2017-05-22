@@ -95,10 +95,10 @@ namespace Training170427.Controllers
         }
 
         [HttpGet]
-        [Route("GetMenu/{id}")]
-        public AddOrder GetMenu(int? TableID)
+        [Route("GetMenu")]
+        public AddOrder GetMenu()
         {
-            var data = service.Menu(TableID);
+            var data = service.Menu();
             return data;
         }
 
