@@ -128,11 +128,10 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         });        
     };
 
-    $scope.GetMenu = function (TableID) {
+    $scope.GetMenu = function () {
         console.log("tes");
-        testservice.GetMenu({TableID}, function (data)
+        testservice.GetMenu({}, function (data)
         {
-            console.log(TableID);
             $scope.menu = data;
             console.log(data);
         })

@@ -174,13 +174,9 @@ namespace Training170427.Service
             }
         }
 
-        public AddOrder Menu(int? TableID)
+        public AddOrder Menu()
         {
-            Models.AddOrder AddOrder = new Models.AddOrder();
-            AddOrder.TableID = TableID;
-            var table = (from a in db.Table
-                         where a.IsDeleted == false && a.TableID == AddOrder.TableID
-                         select a.TableName);           
+            Models.AddOrder AddOrder = new Models.AddOrder();       
 
             var category = (from a in db.Category
                             where a.IsDeleted != true
