@@ -120,36 +120,6 @@ namespace Training170427.Service
             return table;
         }
 
-        //public Models.AddOrder ChooseMenu(int? TableID)
-        //{
-        //        AddOrder order = new AddOrder();
-        //        order.TableID = TableID;
-        //        var category = (from a in db.Category
-        //                        where a.IsDeleted != true
-        //                        select a);
-        //        List<CategoryViewModel> ListCategory = new List<CategoryViewModel>();
-        //        foreach (var item in category)
-        //        {
-        //            CategoryViewModel Category = new CategoryViewModel();
-        //            Category.CategoryID = item.CategoryID;
-        //            Category.CategoryName = item.CategoryName;
-        //            var listmenu = (from a in db.Menu
-        //                            where a.IsDeleted != true && a.CategoryID == item.CategoryID && a.Status.StatusName == "Ready"
-        //                            select new OrderItemViewModel
-        //                            {
-        //                                MenuID = a.MenuID,
-        //                                MenuName = a.MenuName,
-        //                                Price = a.MenuPrice,
-        //                                Content = a.Content,
-        //                                ContentType = a.ContentType
-        //                            }).ToList();
-        //            Category.OrderItem = listmenu;
-        //            ListCategory.Add(Category);
-        //        }
-        //        order.Category = ListCategory;
-        //        return order;
-        //}
-
         public ResponseViewModel Pay(int id)
         {
             Bill bill = new Bill();
@@ -204,18 +174,20 @@ namespace Training170427.Service
             }
         }
 
-        public AddOrder Category(int TypeID, int? TableID)
+        public AddOrder Menu(int? TableID)
         {
             Models.AddOrder AddOrder = new Models.AddOrder();
-            TypeID = AddOrder.TypeID;
-            TableID = AddOrder.TableID;
+            AddOrder.TableID = TableID;
+            var table = (from a in db.Table
+                         where a.IsDeleted == false && a.TableID == AddOrder.TableID
+                         select a.TableName);           
 
             var category = (from a in db.Category
                             where a.IsDeleted != true
                             select a);
 
             List<Models.CategoryViewModel> ListCategoryViewModel = new List<Models.CategoryViewModel>();
-            foreach(var item in category)
+            foreach (var item in category)
             {
                 CategoryViewModel CategoryViewModel = new CategoryViewModel();
                 CategoryViewModel.CategoryID = item.CategoryID;
@@ -223,7 +195,7 @@ namespace Training170427.Service
                 var listmenu = (from a in db.Menu
                                 where a.CategoryID == item.CategoryID && a.Status.StatusName == "Ready"
                                 select new OrderItemViewModel
-                                {
+                                {                                   
                                     MenuID = a.MenuID,
                                     MenuName = a.MenuName,
                                     Price = a.MenuPrice,
@@ -237,5 +209,6 @@ namespace Training170427.Service
             AddOrder.Category = ListCategoryViewModel;
             return AddOrder;
         }
+
     }
 }

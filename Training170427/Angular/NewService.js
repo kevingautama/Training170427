@@ -1,7 +1,7 @@
 ﻿var service = angular.module('testService', []);
 
 service.factory('testservice', function ($resource) {
-    return $resource('/api/WaiterAPI/:action/:id', { id: '@id' }, {
+    return $resource('/api/WaiterAPI/:action/:id/:typeid/:tableid/', { id: '@id' }, {
         GetOrder: {
             method: 'GET', isArray:true
         },
@@ -19,6 +19,9 @@ service.factory('testservice', function ($resource) {
         },
         PayOrder: {
             method: 'POST', params:{ action: 'PayOrder'}
+        },
+        GetMenu: {
+            method: 'GET', params:{ action: 'GetMenu'}
         }
     });
 });
