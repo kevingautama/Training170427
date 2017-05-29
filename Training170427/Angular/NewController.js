@@ -86,16 +86,29 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         $scope.pay = false;
     };
 
-    $scope.GoPay = function (id,uang,total) {
-        
+    function print() {
+        var printContents = document.getElementById('DetailOrder').innerHTML;
+        var popupWin = window.open("", "");
+       
+        popupWin.document.write('<html><head><title>Restaurant</title>'
+            + '<link href="/Content/bootstrap.css" rel="stylesheet" />'
+            + '</head><body onload="window.print()">' + printContents + '</body></html>');
+        popupWin.document.close();
+    }
+
+    $scope.GoPay = function (id, uang, total) {
+       
+        console.log('DetailOrder');
         console.log(id + "," + uang + "," + total);
         if (uang >= total) {
             console.log("uang cukup");
             testservice.PayOrder({ id: id }, function (data) {
                 if (data.Status == true) {
                     console.log("Success");
+                    print();
                     $scope.order = testservice.GetOrder();
                     $scope.detailorder = null;
+
                 } else {
                     console.log("Failed");
                 }

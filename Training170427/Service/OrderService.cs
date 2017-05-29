@@ -101,7 +101,8 @@ namespace Training170427.Service
                                 MenuName = a.Menu.MenuName,
                                 Status=a.Status,
                                 Price = a.Menu.MenuPrice,
-                                Qty = a.Qty
+                                Qty = a.Qty,
+                                Notes = a.Notes
                             }).ToList();
 
             data.OrderItem = orderitem;
