@@ -8,6 +8,9 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     $scope.dataTable = [];
     $scope.order = testservice.GetOrder();
 
+    $scope.typeID = 0;
+    $scope.tableID = 0;
+
     $scope.DetailOrder = function (id) {
         console.log(id);
         $scope.pay = false;
@@ -20,7 +23,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             console.log($scope.detailorder);
         });
     };
-
+    
     $scope.calculateGrandTotal = function () {
         $scope.grandTotal = 0;
         $scope.tax = 0;
@@ -128,14 +131,25 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
 
     };   
     
-    $scope.GetTable = function ()
+    $scope.GetTable = function (typeid)
     {
+        $scope.typeID = typeid;
         testservice.GetTable({}, function (data)
         {
             $scope.dataTable = data;
             console.log(data);
         });        
     };
+    
+    $scope.baru = {};
+    $scope.GetMenu = function (id, tablename, typeid) {
+        //
+        $scope.tableID = id;
+        $scope.typeID = typeid;
+
+        $scope.baru = { "TableID": id, "TableName": tablename };
+        $scope.orderedItems = [];
+        //
 
     $scope.GetMenu = function () {
         console.log("tes");
@@ -144,6 +158,60 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             console.log(data);
         });
     };
+
+    $scope.orderedItems = [];
+    console.log($scope.orderedItems);
+
+    $scope.addqty = function (item) {
+        $scope.cek = false;
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (item.MenuID == obj.MenuID) {
+                $scope.cek = true;
+                obj.Qty = obj.Qty + 1;
+            } 
+        })
+        if ($scope.cek == false) {
+            $scope.orderedItems.push(item);
+            item.Qty = item.Qty + 1;
+        }
+    };
+
+    $scope.delqty = function (MenuID, index) {
+        console.log(MenuID);
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (MenuID == obj.MenuID) {
+                $scope.cek = true;
+                if (obj.Qty == 1) {
+                    $scope.orderedItems.splice(index, 1);
+                } else {
+                    obj.Qty = obj.Qty - 1;
+                }                                              
+            }
+        })
+    }
+
+    $scope.new = {}
+    $scope.CreateOrder = function () {
+        //console.log($s, tableid)
+        $scope.new = { "TypeID": $scope.typeID, "TableID": $scope.tableID, "OrderItem": $scope.orderedItems }
+        console.log($scope.new);
+        //testservice.data = $scope.new;
+        testservice.NewOrder($scope.new, function (data) {
+            console.log(data);
+            $scope.order = testservice.GetOrder();
+            $scope.detailorder = null;
+        })
+    };
+    // create function order
+    // API post model order
+    
+    // create function
+
+    //$scope.newOrder = {
+    //    TableID : tableid,
+    //    TypeID : typeid,
+    //    OrderItem : $scope.orderedItems
+    //};
 
     //----------------------------------------Kitchen------------------------------------------------------------
 
