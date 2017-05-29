@@ -24,9 +24,12 @@
                                 <tr ng-if="item.Notes != null">
                                     <td colspan="3" style="color:gray">{{item.Notes}}</td>
                                 </tr>
+                                
                             </tbody>
                                 
-                                
+                            <tr ng-if="data.Status == 'Cook'">
+                                <td colspan="3"><button class="btn btn-primary btn-block" ng-click="printkitchen(order.OrderID)">Print</button></td>
+                            </tr>
                                
                             
                         </table>
@@ -110,3 +113,15 @@
         }
     </div>
 </div>*@
+
+<div id="printkitchen" ng-hide="true">
+    <div class="col-md-4">
+        <h3>{{kitchenprint.TableName}}{{kitchenprint.Name}}</h3>
+        <table class="table table-hover">
+            <tr ng-repeat="data in kitchenprint.OrderItem">
+                <td>{{data.MenuName}}</td>
+                <td>{{data.Qty}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

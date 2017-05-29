@@ -48,6 +48,9 @@ service.factory('kitchenservice', function ($resource) {
         },
         GetOrderItemByOrderID: {
             method: 'GET' , isArray: true , params: {action : 'GetOrderItemByOrderID'}
+        },
+        GetOrderItemPrint: {
+            method: 'GET', params: {action: 'GetOrderItemPrint' }
         }
     });
 });

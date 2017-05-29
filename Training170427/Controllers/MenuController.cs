@@ -57,6 +57,7 @@ namespace Training170427.Controllers
                 menu.ContentType = upload.ContentType;
                 using (var reader = new System.IO.BinaryReader(upload.InputStream))
                 {
+
                     menu.Content = reader.ReadBytes(upload.ContentLength);
                 }
                 menu.CreatedBy = "Admin";

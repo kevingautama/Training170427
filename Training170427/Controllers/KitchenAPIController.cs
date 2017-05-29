@@ -93,5 +93,27 @@ namespace Training170427.Controllers
         {
             return service.GetOrderItemByOrderID(id);
         }
+
+        [Route("GetOrderItemPrint/{id}")]
+        public Models.Order GetOrderItemPrint(int id)
+        {
+            Models.Order data = new Models.Order();
+            var order = db.Order.Find(id);
+            data.Name = order.Name;
+            data.OrderID = order.OrderID;
+            data.TableName = (from a in db.Track
+                             where a.OrderID == order.OrderID
+                             select a.Table.TableName).FirstOrDefault();
+            var orderitem = (from a in db.OrderItem
+                             where a.IsDeleted != true && a.Status == "Cook" && a.OrderID == order.OrderID
+                             select new OrderItemViewModel
+                             {
+                                 MenuName = a.Menu.MenuName,
+                                 Qty = a.Qty,
+                                 Notes = a.Notes
+                             }).ToList();
+            data.OrderItem = orderitem;
+            return data;
+        }
     }
 }
