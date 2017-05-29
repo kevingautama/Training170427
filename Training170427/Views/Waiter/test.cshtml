@@ -44,7 +44,17 @@
 <div class="row">
     <div class="col-md-6">
         <div ng-repeat="type in order" >
-            <h4>{{type.TypeName}}  <button data-toggle="modal" data-target="#myModal" ng-click="GetTable()"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button></h4>
+            <div>
+                <h4>
+                    {{type.TypeName}}
+                    <bdi ng-if="type.TypeID == 1">
+                        <button data-toggle="modal" data-target="#myModal" ng-click="GetTable(type.TypeID)" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button>
+                    </bdi>
+                    <bdi ng-if="type.TypeID == 2">
+                        <button data-toggle="modal" data-target="#myModal2" ng-click="GetMenu(null,'',type.TypeID)" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button>
+                    </bdi>
+                </h4>
+            </div>
             <div class="row" style="overflow: auto; max-height:50vh ; ">
 
                 <div ng-show="type.Order != null" class="col-md-4" ng-repeat="data in type.Order">
@@ -78,7 +88,7 @@
     </div>
     <div class="col-md-6" style="background-color:#ecf0f1;" >
         <div class="col-md-12" ng-if="detailorder.OrderID != null">
-            <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Order </button><button ng-click="edit()" ng-hide="test === true" class="btn btn-primary" @*data-toggle="modal" data-target="#ModalEdit"*@><i class="glyphicon glyphicon-edit"></i>Edit </button><button ng-show="test === true" ng-click="save()" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> Save</button></h4>
+            <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" ng-click="" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Order </button><button ng-click="edit()" ng-hide="test === true" class="btn btn-primary" @*data-toggle="modal" data-target="#ModalEdit"*@><i class="glyphicon glyphicon-edit"></i>Edit </button><button ng-show="test === true" ng-click="save()" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> Save</button></h4>
             <div class="row">
                 <div class="col-md-6">
                     <h5><b>Order No : {{detailorder.OrderID}}</b></h5>
@@ -121,7 +131,7 @@
                             <td>{{item.Qty}}</td>
                             <td>{{item.Price}}</td>
                             <td>{{item.Price*item.Qty}}</td>
-                            <td>{{item.Notes}}</td>
+                            <td>Pedas</td>
                             <td>
                                 <button  ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)"  class="btn btn-danger btn-xs btn-block">Cancel</button>
                                 <button  ng-if="item.Status == 'FinishCook'" ng-click="serve(item.OrderItemID,detailorder.OrderID)" class="btn btn-primary btn-xs btn-block">Served</button>
@@ -198,7 +208,7 @@
                             <button class="btn btn-danger btn-lg" ng-click="CancelPay()">Cancel</button>
                         </div>
                         <div class="btn-group">
-                            <button class="btn btn-success btn-lg" ng-click="GoPay(detailorder.OrderID,uang,grandTotal+tax)" >Pay</button>
+                            <button class="btn btn-success btn-lg" ng-click="GoPay(detailorder.OrderID,uang,grandTotal+tax)">Pay</button>
                         </div>
                     </div>
            
@@ -309,13 +319,12 @@
             <div class="modal-body">
                 <div class="row rows">
                     <div class="col-lg-3 col-lg-3s" ng-repeat="tab in dataTable">
-                        <input type="button" class="btn btn-lg btn-lgs" data-toggle="modal" data-target="#myModal2" data-dismiss="modal" value="{{tab.TableName}}" ng-click="GetMenu(tab.TableID, tab.TableName)"/>
+                        <input type="button" class="btn btn-lg btn-lgs" data-toggle="modal" data-target="#myModal2" data-dismiss="modal" value="{{tab.TableName}}" ng-click="GetMenu(tab.TableID, tab.TableName, typeID)"/>
                     </div>
             </div>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Order</button>
             </div>
         </div>
     </div>
@@ -471,7 +480,7 @@
                                                         <td>{{item.Qty}}</td>
                                                         <td>{{item.MenuPrice}}</td>
                                                         <td><input type="text" /></td>
-                                                        <td><button class="btn btn-primary" style="height:4vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                        <td><button class="btn btn-primary" style="height:6vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
                                                     </tr>
                                                     <tr>
                                                         <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
@@ -577,68 +586,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Order</button>
+                <button type="button" class="btn btn-default" ng-click="CreateOrder()" data-dismiss="modal">Order</button>
             </div>
         </div>
-    </div>
-</div>
-<div id="DetailOrder"  ng-hide="true">
-
-    <div  class="col-md-4" >
-        <div class="row">
-            <div class="col-md-6">
-                <h5><b>Order No : {{detailorder.OrderID}}</b></h5>
-            </div>
-            <div class="col-md-6">
-                <h5><em>{{detailorder.OrderDate}}</em></h5>
-            </div>
-        </div>
-        <table class="table table-hover">
-            <tr>
-                <th>
-                    Menu
-                </th>
-
-                <th>
-                    Qty
-                </th>
-                <th>
-                    Harga
-                </th>
-                <th>
-                    Total
-                </th>
-
-                <th></th>
-            </tr>
-            <tr ng-repeat="item in detailorder.OrderItem">
-                <td>{{item.MenuName}}</td>
-
-                <td>{{item.Qty}}</td>
-                <td>{{item.Price}}</td>
-                <td>{{item.Price*item.Qty}}</td>
-
-                <td>
-                    <button ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)" class="btn btn-danger btn-xs btn-block">Cancel</button>
-                    <button ng-if="item.Status == 'FinishCook'" ng-click="serve(item.OrderItemID,detailorder.OrderID)" class="btn btn-primary btn-xs btn-block">Served</button>
-                </td>
-
-            </tr>
-
-        </table>
-        <table class="table table-responsive table-bordered ">
-            <tr>
-                <td>SubTotal</td>
-                <td>{{grandTotal}}</td>
-            </tr>
-            <tr>
-                <td>Pajak</td>
-                <td>{{tax}}</td>
-            </tr>
-            <tr>
-                <td>GrandTotal</td>
-                <td>{{tax + grandTotal}}</td>
-            </tr>
-        </table>
     </div>
 </div>

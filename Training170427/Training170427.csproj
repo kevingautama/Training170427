@@ -187,6 +187,7 @@
     <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\CheckOutModel.cs" />
     <Compile Include="Models\KitchenViewModel.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\OrderItemViewModel.cs" />

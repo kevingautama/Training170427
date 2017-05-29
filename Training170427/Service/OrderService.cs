@@ -109,17 +109,7 @@ namespace Training170427.Service
             return data;
         }
 
-        public List<Models.TableViewModel> Table()
-        {
-            var table = (from a in db.Table
-                         where a.IsDeleted != true && a.TableStatus == "NotOccupied"
-                         select new TableViewModel
-                         {
-                             TableID = a.TableID,
-                             TableName = a.TableName
-                         }).ToList();
-            return table;
-        }
+        
 
         public ResponseViewModel Pay(int id)
         {
@@ -175,10 +165,21 @@ namespace Training170427.Service
             }
         }
 
-        public AddOrder Menu(int? id)
+        public List<Models.TableViewModel> Table()
+        {
+            var table = (from a in db.Table
+                         where a.IsDeleted != true && a.TableStatus == "NotOccupied"
+                         select new TableViewModel
+                         {
+                             TableID = a.TableID,
+                             TableName = a.TableName
+                         }).ToList();
+            return table;
+        }
+
+        public AddOrder Menu()
         {
             Models.AddOrder AddOrder = new Models.AddOrder();
-            AddOrder.TableID = id;
 
             var category = from a in db.Category
                            where a.IsDeleted != true
@@ -206,6 +207,93 @@ namespace Training170427.Service
 
             AddOrder.Category = ListCategoryViewModel;
             return AddOrder;
+        }
+
+        public ResponseViewModel CreateOrder(AddOrder data)
+        {
+            var type = db.Type.Find(data.TypeID).TypeName;
+            if(type == "Order")
+            {
+                if(db.Table.Find(data.TableID).TableStatus == "NotOccupied")
+                {
+                    Table Table = db.Table.Find(data.TableID);
+                    Table.TableStatus = "Occupied";
+                    db.Entry(Table).State = System.Data.Entity.EntityState.Modified;
+
+                    Order order = new Order();
+                    order.Finish = false;
+                    order.IsDeleted = false;
+                    order.OrderDate = DateTime.Now;
+                    order.CreatedBy = "Admin";
+                    order.CreatedDate = DateTime.Now;
+                    order.TypeID = data.TypeID;
+                    db.Order.Add(order);
+                        foreach(var item2 in data.OrderItem)
+                        {
+                            if(item2.Qty > 0)
+                            {
+                                OrderItem OrderItem = new OrderItem();
+                                OrderItem.OrderID = data.OrderID;
+                                OrderItem.MenuID = item2.MenuID;
+                                OrderItem.Qty = item2.Qty;
+                                OrderItem.CreatedBy = "Admin";
+                                OrderItem.CreatedDate = DateTime.Now;
+                                OrderItem.Status = "Order";
+                                db.OrderItem.Add(OrderItem);
+                            }
+                        }
+                    Track Track = new Track();
+                    Track.OrderID = order.OrderID;
+                    Track.TableID = Table.TableID;
+                    Track.CreatedBy = "Admin";
+                    Track.CreatedDate = DateTime.Now;
+                    db.Track.Add(Track);
+                }
+            }else if (type == "TakeAway")
+            {
+                Order order = new Order();
+                order.OrderDate = DateTime.Now;
+                order.TypeID = data.TypeID;
+                order.Finish = false;
+                order.CreatedBy = "Admin";
+                order.CreatedDate = DateTime.Now;
+                order.IsDeleted = false;
+                db.Order.Add(order);
+
+                foreach (var item in data.Category)
+                {
+                    foreach (var item2 in item.OrderItem)
+                    {
+                        if (item2.Qty > 0)
+                        {
+                            OrderItem orderitem = new OrderItem();
+                            orderitem.OrderID = order.OrderID;
+                            orderitem.MenuID = item2.MenuID;
+                            orderitem.Qty = item2.Qty;
+                            orderitem.Notes = item2.Notes;
+                            orderitem.Status = "Order";
+                            orderitem.CreatedBy = "Admin";
+                            orderitem.CreatedDate = DateTime.Now;
+                            db.OrderItem.Add(orderitem);
+                        }
+                    }
+                }
+            }
+            
+            if(db.SaveChanges() > 0)
+            {
+                return new ResponseViewModel
+                {
+                    Status = true
+                };
+            }
+            else
+            {
+                return new ResponseViewModel
+                {
+                    Status = false
+                };
+            } 
         }
 
     }
