@@ -44,7 +44,17 @@
 <div class="row">
     <div class="col-md-6">
         <div ng-repeat="type in order" >
-            <h4>{{type.TypeName}}  <button data-toggle="modal" data-target="#myModal" ng-click="GetTable()"  class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button></h4>
+            <div>
+                <h4>
+                    {{type.TypeName}}
+                    <bdi ng-if="type.TypeID == 1">
+                        <button data-toggle="modal" data-target="#myModal" ng-click="GetTable(type.TypeID)" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button>
+                    </bdi>
+                    <bdi ng-if="type.TypeID == 2">
+                        <button data-toggle="modal" data-target="#myModal2" ng-click="GetMenu(null,'',type.TypeID)" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Create Order </button>
+                    </bdi>
+                </h4>
+            </div>
             <div class="row" style="overflow: auto; max-height:50vh ; ">
 
                 <div ng-show="type.Order != null" class="col-md-4" ng-repeat="data in type.Order">
@@ -309,13 +319,12 @@
             <div class="modal-body">
                 <div class="row rows">
                     <div class="col-lg-3 col-lg-3s" ng-repeat="tab in dataTable">
-                        <input type="button" class="btn btn-lg btn-lgs" data-toggle="modal" data-target="#myModal2" data-dismiss="modal" value="{{tab.TableName}}" ng-click="GetMenu(tab.TableID, tab.TableName)"/>
+                        <input type="button" class="btn btn-lg btn-lgs" data-toggle="modal" data-target="#myModal2" data-dismiss="modal" value="{{tab.TableName}}" ng-click="GetMenu(tab.TableID, tab.TableName, typeID)"/>
                     </div>
             </div>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Order</button>
             </div>
         </div>
     </div>
@@ -471,7 +480,7 @@
                                                         <td>{{item.Qty}}</td>
                                                         <td>{{item.MenuPrice}}</td>
                                                         <td><input type="text" /></td>
-                                                        <td><button class="btn btn-primary" style="height:4vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                        <td><button class="btn btn-primary" style="height:6vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
                                                     </tr>
                                                     <tr>
                                                         <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
@@ -577,7 +586,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Order</button>
+                <button type="button" class="btn btn-default" ng-click="CreateOrder()" data-dismiss="modal">Order</button>
             </div>
         </div>
     </div>

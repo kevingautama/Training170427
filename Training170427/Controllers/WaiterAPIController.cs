@@ -44,7 +44,7 @@ namespace Training170427.Controllers
         //    return data;
         //}
 
-        [HttpPost]
+        [HttpGet]
         [Route("Table")]
         public List<Models.TableViewModel> GetTable()
         {
@@ -95,11 +95,19 @@ namespace Training170427.Controllers
         }
 
         [HttpGet]
-        [Route("GetMenu/{id}")]
-        public AddOrder GetMenu(int? id)
+        [Route("GetMenu")]
+        public AddOrder GetMenu()
         {
-            var data = service.Menu(id);
+            var data = service.Menu();
             return data;
+        }
+
+        // POST: api/WaiterAPI/CreateOrder
+        [HttpPost]
+        [Route("CreateOrder")]
+        public ResponseViewModel CreateOrder(Models.AddOrder data)
+        {
+            return service.CreateOrder(data);
         }
 
         // GET: api/WaiterAPI/5

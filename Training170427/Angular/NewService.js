@@ -15,13 +15,16 @@ service.factory('testservice', function ($resource) {
             method: 'POST', params:{ action: 'CancelOrder'}
         },
         GetTable: {
-            method: 'POST', isArray:true, params: { action: 'Table' }    
+            method: 'GET', isArray:true, params: { action: 'Table' }    
         },
         PayOrder: {
             method: 'POST', params:{ action: 'PayOrder'}
         },
         GetMenu: {
             method: 'GET', params:{ action: 'GetMenu'}
+        },
+        NewOrder: {
+            method: 'POST', params:{ action: 'CreateOrder'}
         }
     });
 });
