@@ -25,6 +25,9 @@ service.factory('testservice', function ($resource) {
         },
         NewOrder: {
             method: 'POST', params:{ action: 'CreateOrder'}
+        },
+        AddOrder: {
+            method: 'POST', params:{ action: 'AddOrder'}
         }
     });
 });
@@ -51,9 +54,6 @@ service.factory('kitchenservice', function ($resource) {
         },
         GetOrderItemByOrderID: {
             method: 'GET' , isArray: true , params: {action : 'GetOrderItemByOrderID'}
-        },
-        GetOrderItemPrint: {
-            method: 'GET', params: {action: 'GetOrderItemPrint' }
         }
     });
 });

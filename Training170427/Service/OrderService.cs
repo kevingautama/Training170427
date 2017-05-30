@@ -294,11 +294,40 @@ namespace Training170427.Service
             } 
         }
 
-        //public ResponseViewModel AddOrder(AddOrder data)
-        //{
-        //    var edit = db.Order.Find(data.OrderID);
+        public ResponseViewModel AddOrder(AddOrder data)
+        {   
+                     
+            foreach (var item2 in data.OrderItem)
+            {
+                if (item2.Qty > 0)
+                {
+                    OrderItem orderitem = new OrderItem();
+                    orderitem.OrderID = data.OrderID;
+                    orderitem.MenuID = item2.MenuID;
+                    orderitem.Qty = item2.Qty;
+                    orderitem.Notes = item2.Notes;
+                    orderitem.Status = "Order";
+                    orderitem.CreatedBy = "Admin";
+                    orderitem.CreatedDate = DateTime.Now;
+                    db.OrderItem.Add(orderitem);
+                }
+            }
 
-        //}
+            if(db.SaveChanges() > 0)
+            {
+                return new ResponseViewModel
+                {
+                    Status = true
+                };
+            }
+            else
+            {
+                return new ResponseViewModel
+                {
+                    Status = false
+                };
+            }
+        }
 
     }
 }
