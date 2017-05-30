@@ -42,9 +42,9 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             console.log('Triggered 1');
             $scope.grandTotal = $scope.grandTotal + (item.Qty * item.Price);
             console.log(item);
-        })
+        });
         $scope.tax = $scope.grandTotal * 0.1;
-    }
+    };
 
     $scope.edit = function () {
         $scope.test = true;
@@ -101,7 +101,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             + '<link href="/Content/bootstrap.css" rel="stylesheet" />'
             + '</head><body onload="window.print()">' + printContents + '</body></html>');
         popupWin.document.close();
-    }
+    };
 
     $scope.GoPay = function (id, uang, total) {
        
@@ -165,8 +165,6 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
 
         $scope.baru = { "TableID": id, "TableName": tablename };
         //
-
-    $scope.GetMenu = function () {
         console.log("tes");
         testservice.GetMenu({}, function (data) {
             $scope.menu = data;
