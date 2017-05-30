@@ -88,7 +88,7 @@
     </div>
     <div class="col-md-6" style="background-color:#ecf0f1;" >
         <div class="col-md-12" ng-if="detailorder.OrderID != null">
-            <h4>Detail Order <button data-toggle="modal" data-target="#myModal2" ng-click="" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Order </button><button ng-click="edit()" ng-hide="test === true" class="btn btn-primary" @*data-toggle="modal" data-target="#ModalEdit"*@><i class="glyphicon glyphicon-edit"></i>Edit </button><button ng-show="test === true" ng-click="save()" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> Save</button></h4>
+            <h4>Detail Order <button ng-click="addOrder()" data-toggle="modal" data-target="#myModal2" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add Order </button><button ng-click="edit()" ng-hide="test === true" class="btn btn-primary" @*data-toggle="modal" data-target="#ModalEdit"*@><i class="glyphicon glyphicon-edit"></i>Edit </button><button ng-show="test === true" ng-click="save()" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i> Save</button></h4>
             <div class="row">
                 <div class="col-md-6">
                     <h5><b>Order No : {{detailorder.OrderID}}</b></h5>
@@ -131,50 +131,12 @@
                             <td>{{item.Qty}}</td>
                             <td>{{item.Price}}</td>
                             <td>{{item.Price*item.Qty}}</td>
-                            <td>Pedas</td>
+                            <td>{{item.Notes}}</td>
                             <td>
                                 <button  ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)"  class="btn btn-danger btn-xs btn-block">Cancel</button>
                                 <button  ng-if="item.Status == 'FinishCook'" ng-click="serve(item.OrderItemID,detailorder.OrderID)" class="btn btn-primary btn-xs btn-block">Served</button>
-                            </td>
-                            
+                            </td>                            
                         </tr>
-                        @*<tr>
-                            <td><button class="btn btn-primary"><i class="glyphicon glyphicon-print"></i>Print </button></td>
-                            <td><b>Pajak</b></td>
-                            <td><b>Rp. {{tax}}</b></td>
-                            <td><b>GrandTotal</b></td>
-                            <td><b>Rp. {{grandTotal+tax}}</b></td>
-                   
-                            <td><button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"><i class="glyphicon glyphicon-credit-card"></i>Pay </button></td>
-                            <td></td>
-                        </tr>*@
-                        @*<tr>
-                            <td colspan="2"></td>
-                            <td></td>
-                           
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                            <td></td>
-                        </tr>*@
-                        
-                        @*<tr ng-hide="pay === true">
-                            <td colspan="3"><button class="btn btn-primary btn-block"><i class="glyphicon glyphicon-print"></i>Print </button></td>
-                            <td colspan="4"><button class="btn btn-success btn-block" data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)" ng-click="Pay()"><i class="glyphicon glyphicon-credit-card"></i>Pay </button> </td>
-                        </tr>*@
-                        
-                        @*<tr ng-show="pay === true">
-                            <td></td>
-                            <td colspan="2"><input type="text" class="form form-control"  ng-model="uang" /></td>
-                            <td><b>Kembalian </b></td>
-                            <td><b>Rp.{{uang - (grandTotal+tax)}}</b></td>
-                            <td></td>
-                        </tr>
-                        <tr ng-show="pay === true">
-                            <td colspan="3"><button class="btn btn-danger btn-block" ng-click="CancelPay()" >Cancel</button></td>
-                            <td colspan="4"><button class="btn btn-success btn-block" ng-click="GoPay(detailorder.OrderID,uang,grandTotal+tax)">Pay</button> </td>
-                        </tr>*@
                     </table>
                     <table class="table table-responsive table-bordered ">
                         <tr>
@@ -223,57 +185,6 @@
         </div>
     </div>
 </div>
-
-@*<div class="modal fade" id="ModalCheckOut">
-    <div class="modal-dialog" >
-        <div class="modal-content" >
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">{{pay.TableName}}{{pay.Name}} - OrderNo {{pay.OrderID}}</h4>
-          
-            </div>
-            <div class="modal-body">
-                <div style="max-height:50vh ; overflow:auto">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <td>Menu</td>
-                                <td>Qty</td>
-                                <td>Price</td>
-                                <td>Total</td>
-                            </tr>
-                            <tr ng-repeat="data in detailorder.OrderItem">
-                                <td>{{data.MenuName}}</td>
-                                <td>{{data.Qty}}</td>
-                                <td>{{data.Price}}</td>
-                                <td>{{data.Qty*data.Price}}</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Pajak</td>
-                                <td>{{tax}}</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>GrandTotal</td>
-                                <td>{{grandTotal+tax}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">      
-                    <button type="button" class="btn btn-success btn-block">Pay</button>
-                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal" data-target="#ModalCheckOut">Close</button>
-
-            </div>
-        </div>
-    </div>
-</div>*@
-
-
 
 <div class="modal fade" id="ModalEdit">
     <div class="modal-dialog">
@@ -337,7 +248,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{baru.TableName}}</h4>
+                <div ng-show="typeID == 1" class="modal-title">
+                    <h4>{{baru.TableName}}</h4>
+                    <h3>{{orderID}}</h3>
+                </div>
+                <div ng-show="typeID == 2">
+                    <h4 class="modal-title">Input Name Here</h4>
+                    <input ng-model="Name" />
+                </div>
                 <p>Choose Menu</p>
             </div>
             <div class="modal-body" style="height:480px;">
@@ -361,135 +279,17 @@
                                     </ul>
                                 </div>
                             </uib-tab>
-                        </uib-tabset>                        
-                        @*<div class="tabbable">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#food" data-toggle="tab">Food</a></li>
-                                <li><a href="#drink" data-toggle="tab">Drink</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="food">
-                                    <div class="row rows scroll">
-                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">                                            
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                                <h4>Nasi Goreng</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                                <h4>Nasi Goreng</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                                <h4>Nasi Goreng</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/nasigoreng.jpg" class="imgs" />
-                                                <h4>Nasi Goreng</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="drink">
-                                    <div class="row rows scroll">
-                                        <div class="row rows" style="padding-left:20px; padding-top:20px;">
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <img src="~/Content/img/icetea.jpg" class="imgs" />
-                                                <h4>Ice Tea</h4>
-                                                <p style="font-size:13px;">Price :  Rp. 10000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                        </uib-tabset>
                     </div>
 
                     <div class="col-lg-8">
-                        @*<div class="panel-heading">Ordered</div>
-                        <div class="panel-body">
-                            <ul dnd-list="orderedItems" style="height: 70px;">
-                                <li class="columnangular" ng-repeat="item in orderedItems"
-                                    dnd-draggable="item"
-                                    dnd-effect-allowed="move"
-                                    dnd-moved="orderedItems.splice($index, 1)"
-                                    dnd-selected="models.selected = item">
-                                    {{item.MenuName}}
-                                </li>
-                            </ul>
-                        </div>*@
                         <div class="tabbable">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#fooddetail" data-toggle="tab">Your Order</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div id="fooddetail" class="tab-pane active scroll" style="height:50vh;">
-                                    @*<ul dnd-list="orderedItems" style="height: 80px; list-style-type:none; padding-left:0px;">
-                                        <li ng-repeat="item in orderedItems"
-                                            dnd-draggable="item"
-                                            dnd-effect-allowed="move"
-                                            dnd-moved="orderedItems.splice($index, 1)"
-                                            dnd-selected="models.selected = item">*@
-                                            <table class="table table-responsive" style="border-bottom-style:hidden">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nama</th>
-                                                        <th>Qty</th>
-                                                        <th>Price</th>
-                                                        <th>Notes</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody dnd-list="orderedItems" dnd-drop="addqty(item)">
-                                                    <tr ng-repeat="item in orderedItems"
-                                                        dnd-draggable="item"
-                                                        dnd-effect-allowed="move"
-                                                        dnd-moved="orderedItems.splice($index, 1)"
-                                                        dnd-selected="models.selected = item"
-                                                        >
-                                                        <td>{{item.MenuName}}</td>
-                                                        <td>{{item.Qty}}</td>
-                                                        <td>{{item.MenuPrice}}</td>
-                                                        <td><input type="text" /></td>
-                                                        <td><button class="btn btn-primary" style="height:6vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        @*</li>
-                                    </ul>*@
-                                    @*<table class="table table-responsive">
+                                <div id="fooddetail" class="tab-pane active scroll" style="height:50vh;">                                    
+                                    <table class="table table-responsive" style="border-bottom-style:hidden">
                                         <thead>
                                             <tr>
                                                 <th>Nama</th>
@@ -498,87 +298,20 @@
                                                 <th>Notes</th>
                                                 <th></th>
                                             </tr>
-                                        </thead>*@
-                                        @*<tbody>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                        </thead>            
+                                        <tbody dnd-list="orderedItems" dnd-drop="addqty(item)">
+                                            <tr ng-repeat="item in orderedItems">
+                                                <td>{{item.MenuName}}</td>
+                                                <td>{{item.Qty}}</td>
+                                                <td>{{item.Price * item.Qty}}</td>                                                
+                                                <td><input ng-model="item.Notes"/></td>
+                                                <td><button class="btn btn-primary" style="height:6vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
                                             </tr>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nasi Goreng</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ice Tea</td>
-                                                <td>1</td>
-                                                <td>Rp. 10000</td>
-                                                <td><input type="text" /></td>
-                                                <td><button class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            </tr>
-                                        </tbody>*@
-                                    @*</table>*@
+                                        </tbody>            
+                                    </table>                                    
                                 </div>
                             </div>
                         </div>
@@ -591,3 +324,6 @@
         </div>
     </div>
 </div>
+
+
+

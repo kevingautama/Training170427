@@ -236,6 +236,7 @@ namespace Training170427.Service
                                 OrderItem.OrderID = data.OrderID;
                                 OrderItem.MenuID = item2.MenuID;
                                 OrderItem.Qty = item2.Qty;
+                                OrderItem.Notes = item2.Notes;
                                 OrderItem.CreatedBy = "Admin";
                                 OrderItem.CreatedDate = DateTime.Now;
                                 OrderItem.Status = "Order";
@@ -252,6 +253,7 @@ namespace Training170427.Service
             }else if (type == "TakeAway")
             {
                 Order order = new Order();
+                order.Name = data.Name;
                 order.OrderDate = DateTime.Now;
                 order.TypeID = data.TypeID;
                 order.Finish = false;
@@ -259,10 +261,7 @@ namespace Training170427.Service
                 order.CreatedDate = DateTime.Now;
                 order.IsDeleted = false;
                 db.Order.Add(order);
-
-                foreach (var item in data.Category)
-                {
-                    foreach (var item2 in item.OrderItem)
+                    foreach (var item2 in data.OrderItem)
                     {
                         if (item2.Qty > 0)
                         {
@@ -277,7 +276,6 @@ namespace Training170427.Service
                             db.OrderItem.Add(orderitem);
                         }
                     }
-                }
             }
             
             if(db.SaveChanges() > 0)
@@ -295,6 +293,12 @@ namespace Training170427.Service
                 };
             } 
         }
+
+        //public ResponseViewModel AddOrder(AddOrder data)
+        //{
+        //    var edit = db.Order.Find(data.OrderID);
+
+        //}
 
     }
 }
