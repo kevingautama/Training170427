@@ -207,19 +207,11 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         }        
     };
 
-    $scope.EditQtyPlus = function (item) {
+    $scope.EditQtyPlus = function (index) {
 
-        $scope.cek = false;
-        angular.forEach($scope.orderedItems, function (obj) {
-            if (item.MenuID == obj.MenuID) {
-                $scope.cek = true;
-                obj.Qty = obj.Qty + 1;
-            }
-        })
-        if ($scope.cek == false) {
-            $scope.orderedItems.push(item);
-        }
-    }
+        $scope.detailorder.OrderItem[index].Qty++;
+
+    };
 
     $scope.delqty = function (MenuID, index) {
         console.log(MenuID);
@@ -230,24 +222,16 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
                     $scope.orderedItems.splice(index, 1);
                 } else {
                     obj.Qty = obj.Qty - 1;
-                }                                              
+                }
             }
         })
-    }
+    };
 
-    $scope.EditQtyMinus = function (item) {
+    $scope.EditQtyMinus = function (index) {
 
-        $scope.cek = false;
-        angular.forEach($scope.orderedItems, function (obj) {
-            if (item.MenuID == obj.MenuID) {
-                $scope.cek = true;
-                obj.Qty = obj.Qty - 1;
-            }
-        })
-        if ($scope.cek == false) {
-            $scope.orderedItems.push(item);
-        }
-    }
+        $scope.detailorder.OrderItem[index].Qty--;
+
+    };
 
     $scope.new = {}
     $scope.CreateOrder = function () {
@@ -297,16 +281,6 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
             })
         }
     };
-    // create function order
-    // API post model order
-    
-    // create function
-
-    //$scope.newOrder = {
-    //    TableID : tableid,
-    //    TypeID : typeid,
-    //    OrderItem : $scope.orderedItems
-    //};
 
     //----------------------------------------Kitchen------------------------------------------------------------
 

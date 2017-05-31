@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div  ng-hide="type.Order != false"  class="col-md-4">
-                   <h1>asdfdsfasdf</h1>
+                   <h1></h1>
                 </div>
                 @*<div class="col-md-4" ng-repeat="data in type.Order">
                     <div class="panel panel-primary">
@@ -141,12 +141,12 @@
                                 <span ng-if="item.Status == 'Served'" class="label label-success">{{item.Status}}</span>                               
                             </td>   
                             <td ng-show="!isEditMode">{{item.Qty}}</td>
-                            <td ng-show="isEditMode && item.Status == 'Order'">@*<button class="btn btn-primary" style="height:6vh;" ng-click="EditQtyMinus(item)"><i class="glyphicon glyphicon-plus"></i></button>*@<label ng-model="item.Qty" />@*<button class="btn btn-primary" style="height:6vh;" ng-click="EditQtyPlus(item)"><i class="glyphicon glyphicon-minus"></i></button>*@</td> 
+                            <td ng-show="isEditMode && item.Status == 'Order'"><button class="btn btn-primary btn-sm" ng-click="EditQtyMinus($index)"><i class="glyphicon glyphicon-minus"></i></button><label style="padding-left:5px; padding-right:5px" >{{item.Qty}}</label><button class="btn btn-primary btn-sm" ng-click="EditQtyPlus($index)"><i class="glyphicon glyphicon-plus"></i></button></td> 
                             <td ng-show="isEditMode && item.Status != 'Order'">{{item.Qty}}</td>                                           
                             <td>{{item.Price}}</td>
                             <td>{{item.Price*item.Qty}}</td>
                             <td ng-show="!isEditMode">{{item.Notes}}</td>
-                            <td ng-show="isEditMode && item.Status == 'Order'"><input ng-model="item.Notes" /></td>
+                            <td ng-show="isEditMode && item.Status == 'Order'"><input class="form-control" ng-model="item.Notes" /></td>
                             <td ng-show="isEditMode && item.Status != 'Order'">{{item.Notes}}</td>  
                             <td>
                                 <button  ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)"  class="btn btn-danger btn-xs btn-block">Cancel</button>
@@ -319,8 +319,8 @@
                                                 <td>{{item.MenuName}}</td>
                                                 <td>{{item.Qty}}</td>
                                                 <td>{{item.Price * item.Qty}}</td>                                                
-                                                <td><input ng-model="item.Notes"/></td>
-                                                <td><button class="btn btn-primary" style="height:6vh;" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                <td><input class="form-control" ng-model="item.Notes"/></td>
+                                                <td><button class="btn btn-primary" ng-click="delqty(item.MenuID, $index)"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             </tr>
                                             <tr>
                                                 <td><button type="button" class="btn btn-primary">Drag Your Order Here</button></td>
