@@ -77,7 +77,7 @@ namespace Training170427.Service
         {
             Models.Order data = new Models.Order();
             var order = db.Order.Find(id);
-
+            data.Name = order.Name;
             data.OrderID = order.OrderID;
             data.OrderDate = order.CreatedDate;
             data.TypeID = order.TypeID;

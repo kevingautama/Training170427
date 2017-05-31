@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6" style="background-color:#ecf0f1;" >
+    <div class="col-md-6" style="background-color:#ecf0f1; border-radius:20px" >
         <div class="col-md-12" ng-if="detailorder.OrderID != null">
             <h4>Detail Order 
                 <button ng-click="addOrder(detailorder.OrderID)" data-toggle="modal" data-target="#myModal2" class="btn btn-primary">
@@ -141,12 +141,20 @@
                                 <span ng-if="item.Status == 'Served'" class="label label-success">{{item.Status}}</span>                               
                             </td>   
                             <td ng-show="!isEditMode">{{item.Qty}}</td>
-                            <td ng-show="isEditMode && item.Status == 'Order'"><button class="btn btn-primary btn-sm" ng-click="EditQtyMinus($index)"><i class="glyphicon glyphicon-minus"></i></button><label style="padding-left:5px; padding-right:5px" >{{item.Qty}}</label><button class="btn btn-primary btn-sm" ng-click="EditQtyPlus($index)"><i class="glyphicon glyphicon-plus"></i></button></td> 
+                            <td ng-show="isEditMode && item.Status == 'Order'">
+                                <button class="btn btn-primary btn-sm" ng-click="EditQtyMinus($index)">
+                                    <i class="glyphicon glyphicon-minus"></i>
+                                </button>
+                                <label style="padding-left:5px; padding-right:5px" >{{item.Qty}}</label>
+                                <button class="btn btn-primary btn-sm" ng-click="EditQtyPlus($index)">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                </button>
+                            </td> 
                             <td ng-show="isEditMode && item.Status != 'Order'">{{item.Qty}}</td>                                           
                             <td>{{item.Price}}</td>
                             <td>{{item.Price*item.Qty}}</td>
                             <td ng-show="!isEditMode">{{item.Notes}}</td>
-                            <td ng-show="isEditMode && item.Status == 'Order'"><input class="form-control" ng-model="item.Notes" /></td>
+                            <td ng-show="isEditMode && item.Status == 'Order'" style="width:30%"><input class="form-control" ng-model="item.Notes" /></td>
                             <td ng-show="isEditMode && item.Status != 'Order'">{{item.Notes}}</td>  
                             <td>
                                 <button  ng-if="item.Status == 'Order'" ng-click="cancel(item.OrderItemID,detailorder.OrderID)"  class="btn btn-danger btn-xs btn-block">Cancel</button>
@@ -175,15 +183,15 @@
                    
                     <div ng-show="pay != true" class="btn-group btn-group-justified">
                         <div class="btn-group">
-                            <button class="btn btn-lg btn-primary "><i class="glyphicon glyphicon-print"></i> Print </button>
+                            <button class="btn btn-lg btn-primary " style="margin-bottom:10px"><i class="glyphicon glyphicon-print"></i> Print </button>
                         </div>
                         <div class="btn-group">
-                            <button class="btn btn-lg btn-success " @*data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"*@ ng-click="Pay()"><i class="glyphicon glyphicon-credit-card"></i> Pay </button>
+                            <button class="btn btn-lg btn-success " style="margin-bottom:10px"@*data-toggle="modal" data-target="#ModalCheckOut" ng-click="Pay(detailorder.OrderID)"*@ ng-click="Pay()"><i class="glyphicon glyphicon-credit-card"></i> Pay </button>
                         </div>
                     </div>
                     <div ng-show="pay == true" class="btn-group btn-group-justified">
                         <div class="btn-group">
-                            <button class="btn btn-danger btn-lg" ng-click="CancelPay()">Cancel</button>
+                            <button class="btn btn-danger btn-lg"  ng-click="CancelPay()">Cancel</button>
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-success btn-lg" ng-click="GoPay(detailorder.OrderID,uang,grandTotal+tax)">Pay</button>
@@ -268,8 +276,13 @@
                     <h4>{{baru.TableName}}</h4>
                 </div>
                 <div ng-show="typeID == 2">
-                    <h4 class="modal-title">Input Name Here</h4>
-                    <input ng-model="Name" />
+                    <div ng-if="!isAddOrder">
+                        <h4 class="modal-title">Input Name Here</h4>
+                        <input ng-model="Name" />
+                    </div>    
+                    <div ng-if="isAddOrder">
+                        <h4 class="modal-title">{{Name}}</h4>
+                    </div>                
                 </div>
                 <p>Choose Menu</p>
             </div>

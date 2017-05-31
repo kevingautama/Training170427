@@ -26,9 +26,11 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         console.log(id);
         $scope.isEditMode = false;
         $scope.pay = false;
+        $scope.Name = '';
         testService.$DetailOrder({ id: id }, function (data) {
             $scope.test = false;
             $scope.detailorder = data;
+            $scope.Name = data.Name;
 
             $scope.calculateGrandTotal();
 
@@ -167,12 +169,13 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     $scope.GetMenu = function (id, tablename, typeid) {
 
         $scope.orderedItems = [];
-        $scope.Name = '';
+        //$scope.Name = '';
         //
         $scope.tableID = id;
         $scope.typeID = typeid;
 
-        if ($scope.isAddOrder) {
+        if (!$scope.isAddOrder) {
+            $scope.Name = '';
             //$scope.orderedItems = $scope.selectedOrder.OrderItem;
         }
 
@@ -209,7 +212,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
 
     $scope.EditQtyPlus = function (index) {
 
-        $scope.detailorder.OrderItem[index].Qty++;
+        $scope.detailorder.OrderItem[index].Qty++;        
 
     };
 
@@ -227,10 +230,10 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         })
     };
 
-    $scope.EditQtyMinus = function (index) {
-
-        $scope.detailorder.OrderItem[index].Qty--;
-
+    $scope.EditQtyMinus = function (index) {  
+        if ($scope.detailorder.OrderItem[index].Qty > 1) {
+            $scope.detailorder.OrderItem[index].Qty--;     
+        };
     };
 
     $scope.new = {}
