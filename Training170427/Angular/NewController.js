@@ -12,8 +12,8 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     $scope.tableID = 0;
     $scope.orderID = 0;
     $scope.isAddOrder = false;
+    $scope.isEditMode = false;
 
-    
     $scope.addOrder = function (id) {
         console.log(id);
         $scope.orderID = id;
@@ -24,6 +24,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
 
     $scope.DetailOrder = function (id) {
         console.log(id);
+        $scope.isEditMode = false;
         $scope.pay = false;
         testService.$DetailOrder({ id: id }, function (data) {
             $scope.test = false;
@@ -49,14 +50,24 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
     };
 
     $scope.edit = function () {
-        $scope.test = true;
-        console.log($scope.test);
+        $scope.isEditMode = true;
+        //console.log($scope.test);
     };
 
     $scope.save = function () {
-        $scope.test = false;
-        console.log($scope.test);
-    };
+        
+        $scope.new = {
+            "OrderID": $scope.detailorder.OrderID,
+            "OrderItem": $scope.detailorder.OrderItem
+        }
+        //api post disini
+        //console.log($scope.detailorder);
+        testservice.EditOrder($scope.new, function (data) {
+            $scope.new = {};
+            $scope.isEditMode = false;
+        })
+        //console.log($scope.test);
+    };      
     
     $scope.serve = function (orderItemId, orderId) {
         console.log(orderItemId + "," + orderId);
@@ -196,6 +207,20 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
         }        
     };
 
+    $scope.EditQtyPlus = function (item) {
+
+        $scope.cek = false;
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (item.MenuID == obj.MenuID) {
+                $scope.cek = true;
+                obj.Qty = obj.Qty + 1;
+            }
+        })
+        if ($scope.cek == false) {
+            $scope.orderedItems.push(item);
+        }
+    }
+
     $scope.delqty = function (MenuID, index) {
         console.log(MenuID);
         angular.forEach($scope.orderedItems, function (obj) {
@@ -208,6 +233,20 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
                 }                                              
             }
         })
+    }
+
+    $scope.EditQtyMinus = function (item) {
+
+        $scope.cek = false;
+        angular.forEach($scope.orderedItems, function (obj) {
+            if (item.MenuID == obj.MenuID) {
+                $scope.cek = true;
+                obj.Qty = obj.Qty - 1;
+            }
+        })
+        if ($scope.cek == false) {
+            $scope.orderedItems.push(item);
+        }
     }
 
     $scope.new = {}
@@ -224,6 +263,7 @@ controller.controller('testcontroller', function ($scope, testservice,kitchenser
                 "OrderItem": $scope.orderedItems
             }
             //api post disini
+            console.log($scope.orderedItems);
 
             testservice.AddOrder($scope.new, function (data) {
                 console.log($scope.new);

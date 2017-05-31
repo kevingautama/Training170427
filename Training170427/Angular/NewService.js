@@ -28,6 +28,9 @@ service.factory('testservice', function ($resource) {
         },
         AddOrder: {
             method: 'POST', params:{ action: 'AddOrder'}
+        },
+        EditOrder: {
+            method: 'POST', params:{ action: 'EditOrder'}
         }
     });
 });

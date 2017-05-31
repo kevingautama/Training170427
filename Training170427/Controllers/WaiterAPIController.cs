@@ -117,6 +117,13 @@ namespace Training170427.Controllers
             return service.AddOrder(data);
         }
 
+        [HttpPost]
+        [Route("EditOrder")]
+        public ResponseViewModel EditOrder(Models.AddOrder data)
+        {
+            return service.EditOrder(data);
+        }
+
         // GET: api/WaiterAPI/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)

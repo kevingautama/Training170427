@@ -329,5 +329,44 @@ namespace Training170427.Service
             }
         }
 
+        public ResponseViewModel EditOrder(AddOrder data)
+        {
+
+            foreach (var item2 in data.OrderItem)
+            {
+                if (item2.Qty > 0 && item2.Status == "Order")
+                {
+                    OrderItem orderitem = new OrderItem();
+                    orderitem = db.OrderItem.Find(item2.OrderItemID);
+                    //orderitem.OrderID = data.OrderID;
+                    //orderitem.MenuID = item2.MenuID;
+                    orderitem.Qty = item2.Qty;
+                    orderitem.Notes = item2.Notes;
+                    //orderitem.Status = "Order";
+                    orderitem.UpdatedBy = "Admin";
+                    orderitem.UpdatedDate = DateTime.Now;
+                    //orderitem.CreatedBy = "Admin";
+                    //orderitem.CreatedDate = DateTime.Now;
+                    db.Entry(orderitem).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
+
+            if (db.SaveChanges() > 0)
+            {
+                return new ResponseViewModel
+                {
+                    Status = true
+                };
+            }
+            else
+            {
+                return new ResponseViewModel
+                {
+                    Status = false
+                };
+            }
+        }
+
+
     }
 }
